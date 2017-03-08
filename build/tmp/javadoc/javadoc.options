@@ -1,6 +1,6 @@
--classpath 'C:\\Users\\Yannick\\JEE_workspace\\eventool\\build\\classes\\main;C:\\Users\\Yannick\\JEE_workspace\\eventool\\build\\resources\\main;C:\\Users\\Yannick\\.gradle\\caches\\modules-2\\files-2.1\\com.sun.faces\\jsf-api\\2.2.10\\7c09bb66e7dea101d79c6e0a0cd6c0a3bd0fab3d\\jsf-api-2.2.10.jar'
--d 'C:\\Users\\Yannick\\JEE_workspace\\eventool\\build\\docs\\javadoc'
+-classpath 'C:\\Users\\anwender\\JEE_workspace\\eventool\\build\\classes\\main;C:\\Users\\anwender\\JEE_workspace\\eventool\\build\\resources\\main;C:\\Users\\anwender\\.gradle\\caches\\modules-2\\files-2.1\\com.sun.faces\\jsf-api\\2.2.10\\7c09bb66e7dea101d79c6e0a0cd6c0a3bd0fab3d\\jsf-api-2.2.10.jar'
+-d 'C:\\Users\\anwender\\JEE_workspace\\eventool\\build\\docs\\javadoc'
 -doctitle 'eventool API'
 -quiet 
 -windowtitle 'eventool API'
-'C:\\Users\\Yannick\\JEE_workspace\\eventool\\src\\main\\java\\HelloBean.java'
+'C:\\Users\\anwender\\JEE_workspace\\eventool\\src\\main\\java\\beans\\HelloBean.java'

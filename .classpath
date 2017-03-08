@@ -8,7 +8,5 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/anwender/Downloads/primefaces-6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/anwender/JEE_workspace/eventool/src/main/webapp/WEB-INF/lib/h2-1.4.193.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
