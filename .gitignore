@@ -1,11 +1,6 @@
 *.class
 
-.gradle/
-
-.settings/
-
-.classpath
-
+.gradle
 build/
 
 # Ignore Gradle GUI config
