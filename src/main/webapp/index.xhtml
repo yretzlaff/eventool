@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<h1>EvenTool - Login</h1>
+	<h:form>
+		<div>Username: <p:inputText value="#{loginForm.username}"></p:inputText></div>
+		<div>Passwort: <h:inputSecret value="#{loginForm.password}"></h:inputSecret></div>
+		<p:commandButton action="#{loginForm.login}" value="Login" styleclass="smallButton"> </p:commandButton>
+	</h:form>
+	<h:form>
+		<p:commandButton action="#{loginForm.register}" value="Registrieren" styleclass="smallButton" ></p:commandButton>
+	</h:form>
+</body>
+</html>
