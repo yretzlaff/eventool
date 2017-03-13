@@ -1,6 +1,6 @@
 *.class
 
-.gradle/
+.gradle
 
 .settings/
 
@@ -68,5 +68,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 *.classpath
-.classpath
 *.bin
