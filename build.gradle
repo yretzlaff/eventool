@@ -20,6 +20,7 @@ repositories {
 
 dependencies {
 	providedCompile 'com.sun.faces:jsf-api:2.2.10'
-	compile 'com.h2database:h2:1.4.193'
-	compile 'org.primefaces:primefaces:6.0'
+	providedCompile 'com.h2database:h2:1.4.193'
+	providedCompile 'org.primefaces:primefaces:6.0'
+	providedCompile 'javax.enterprise:cdi-api:1.2'
 }
