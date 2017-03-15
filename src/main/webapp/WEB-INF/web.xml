@@ -4,6 +4,6 @@
 	version="2.5">
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>dark-hive</param-value>
+		<param-value>cupertino</param-value>
 	</context-param>
 </web-app>

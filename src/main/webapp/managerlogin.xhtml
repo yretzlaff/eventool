@@ -4,12 +4,30 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
 <body>
-	<h1>EvenTool - Login</h1>
+
+	<h1>
+		<p:outputLabel value="Eventool - Login"></p:outputLabel>
+	</h1>
+
+	<h:messages />
+
+
 	<h:form>
-		<div>Username: <p:inputText value="#{loginForm.username}"></p:inputText></div>
-		<div>Passwort: <h:inputSecret value="#{loginForm.password}"></h:inputSecret></div>
-		<p:commandButton action="#{loginForm.login}" value="Login" styleclass="smallButton"> </p:commandButton>
+		<div>
+			<p:outputLabel value="Username: "></p:outputLabel>
+			<p:inputText value="#{loginForm.username}"></p:inputText>
+		</div>
+		<div>
+			<p:outputLabel value="Passwort: "></p:outputLabel>
+			<p:password value="#{loginForm.password}"></p:password>
+		</div>
+		<p:commandButton action="#{loginForm.login}" value="Login">
+		</p:commandButton>
 	</h:form>
 </body>
 </html>

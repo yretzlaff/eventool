@@ -4,11 +4,26 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>eventool - Managerevents</title>
+</h:head>
 <body>
+
+	<h1>
+		<p:outputLabel value="Eventeinstellungen"></p:outputLabel>
+	</h1>
+
+
+	<h:messages />
+
+	<h:form>
+		<div>
+			<p:commandButton action="#{managereventsView.neueVeranstaltung}"
+				value="Eventsuche" styleclass="smallButton">
+			</p:commandButton>
+		</div>
+	</h:form>
 
 </body>
 </html>

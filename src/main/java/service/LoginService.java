@@ -1,8 +1,11 @@
+package service;
 import java.util.Optional;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+
+import model.User;
 
 @ManagedBean
 @SessionScoped

@@ -3,12 +3,78 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>eventool</title>
-</head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>eventool-suchergebnisse</title>
+</h:head>
 <body>
-	
+	<h1>
+		<p:outputLabel value="EVENTOOL"></p:outputLabel>
+	</h1>
+
+	<h:form>
+		<div>
+			<p:inputText value="#{anwendersuchergebnisseView.suchbegriff}"></p:inputText>
+
+			<p:commandButton action="#{anwendersuchergebnisseView.suchen}"
+				value="Suchen" styleclass="smallButton">
+			</p:commandButton>
+		</div>
+	</h:form>
+
+	<h:messages />
+
+	<h:form>
+		<div>
+			<p:calendar value="#{dateBean.date}" mode="inline" />
+
+			<p:outputLabel for="orte" value="Ort: " />
+			<p:selectOneMenu id="orte" value="#{anwendersuchergebnisseView.ort}"
+				var="ort">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{anwendersuchergebnisseView.orte}" />
+			</p:selectOneMenu>
+
+
+		</div>
+	</h:form>
+
+	<div>
+
+		<p:panel header="Gefundene Veranstaltungen: ">
+			<f:facet name="footer">
+				<h:outputText value="Ende" />
+			</f:facet>
+
+
+			<p:dataScroller value="#{anwendersuchergebnisseView.veranstaltungen}"
+				var="veranstaltung" mode="inline" chunkSize="10">
+
+				<h:panelGrid columns="2" style="width:100%"
+					columnClasses="logo,detail">
+					<p:button icon="ui-icon-star" value="Hier Bild" title="Bild">
+					</p:button>
+					<p:outputPanel>
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="Name:" />
+							<h:outputText value="#{veranstaltung.name}"
+								style="font-weight: bold" />
+
+							<h:outputText value="Ort:" />
+							<h:outputText value="#{veranstaltung.ort}"
+								style="font-weight: bold" />
+
+							<h:outputText value="Beschreibung:" />
+							<h:outputText value="#{veranstaltung.beschreibung}"
+								style="font-weight: bold" />
+						</h:panelGrid>
+					</p:outputPanel>
+				</h:panelGrid>
+
+			</p:dataScroller>
+		</p:panel>
+	</div>
 </body>
 </html>

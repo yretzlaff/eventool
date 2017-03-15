@@ -3,15 +3,112 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>eventool</title>
-</head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>eventool - Startseite</title>
+
+</h:head>
 <body>
+	<h1>
+		<p:outputLabel value="EVENTOOL"></p:outputLabel>
+	</h1>
+
+
+	<div>
+		<p:button outcome="managerlogin.xhtml" icon="ui-icon-star"
+			value="Login Manager" title="Login Eventmanager">
+		</p:button>
+
+		<p:button outcome="managerlogin.xhtml" icon="ui-icon-star"
+			value="Help" title="Hilfeseite">
+		</p:button>
+	</div>
 	<h:form>
-		<div><p:inputText value="#{veranstaltungssuche.suchbegriff}"></p:inputText></div>
-		<p:commandButton action="#{veranstaltungssuche.suchen}" value="Suchen" styleclass="smallButton"> </p:commandButton>
+		<div>
+			<p:inputText value="#{startseiteView.suchbegriff}"></p:inputText>
+
+			<p:commandButton action="#{startseiteView.suchen}" value="Eventsuche"
+				styleclass="smallButton">
+			</p:commandButton>
+		</div>
 	</h:form>
+
+	<table>
+		<tr>
+			<td>
+				<div class="left">
+					<p:panel header="Neueste Veranstaltungen: ">
+						<f:facet name="footer">
+							<h:outputText value="Ende" />
+						</f:facet>
+						<p:dataScroller value="#{startseiteView.veranstaltungen}"
+							var="veranstaltung" mode="inline" chunkSize="10">
+
+							<h:panelGrid columns="2" style="width:100%"
+								columnClasses="logo,detail">
+								<p:button icon="ui-icon-star"
+									value="Hier Bild" title="Bild">
+								</p:button>
+								<p:outputPanel>
+									<h:panelGrid columns="2" cellpadding="5">
+										<h:outputText value="Name:" />
+										<h:outputText value="#{veranstaltung.name}"
+											style="font-weight: bold" />
+
+										<h:outputText value="Ort:" />
+										<h:outputText value="#{veranstaltung.ort}"
+											style="font-weight: bold" />
+
+										<h:outputText value="Beschreibung:" />
+										<h:outputText value="#{veranstaltung.beschreibung}"
+											style="font-weight: bold" />
+									</h:panelGrid>
+								</p:outputPanel>
+							</h:panelGrid>
+
+							<f:facet name="loader">
+								<p:commandButton type="button" value="Weitere Laden" />
+							</f:facet>
+						</p:dataScroller>
+					</p:panel>
+				</div>
+			</td>
+			<td>
+				<div class="right">
+					<p:panel header="Naechste Veranstaltungen: ">
+						<f:facet name="footer">
+							<h:outputText value="Ende" />
+						</f:facet>
+						<p:dataScroller value="#{startseiteView.veranstaltungen}"
+							var="veranstaltung" mode="inline" chunkSize="10">
+
+							<p:outputPanel>
+								<h:panelGrid columns="2" cellpadding="5">
+									<h:outputText value="Name:" />
+									<h:outputText value="#{veranstaltung.name}"
+										style="font-weight: bold" />
+
+									<h:outputText value="Ort:" />
+									<h:outputText value="#{veranstaltung.ort}"
+										style="font-weight: bold" />
+
+									<h:outputText value="Beschreibung:" />
+									<h:outputText value="#{veranstaltung.beschreibung}"
+										style="font-weight: bold" />
+								</h:panelGrid>
+							</p:outputPanel>
+
+							<f:facet name="loader">
+								<p:commandButton type="button" value="Weitere Laden" />
+							</f:facet>
+						</p:dataScroller>
+					</p:panel>
+				</div>
+			</td>
+		</tr>
+	</table>
+
 </body>
 </html>

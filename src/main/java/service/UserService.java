@@ -1,9 +1,12 @@
+package service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+
+import model.User;
 
 @ApplicationScoped
 @ManagedBean
@@ -13,6 +16,7 @@ public class UserService {
 
 	public UserService() {
 		users = new ArrayList<User>();
+		addUser(new User("admin", "admin", "admintest.de"));
 	}
 
 	public Optional<User> getUserByName(String name) {
