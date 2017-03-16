@@ -7,7 +7,7 @@ import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import model.Veranstaltung;
+import model.*;
 
 @ManagedBean(name = "veranstaltungService")
 @ApplicationScoped
@@ -32,6 +32,11 @@ public class VeranstaltungService {
 	public List<Veranstaltung> getAll() {
 		return this.veranstaltungen;
 	}
+	
+	public List<Veranstaltung> getToManager(User manager){
+		return this.veranstaltungen;
+	}
+	
 	
 	public Veranstaltung addVeranstaltung(Veranstaltung veranst) {
 		

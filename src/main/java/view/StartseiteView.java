@@ -14,14 +14,15 @@ import model.Veranstaltung;
 public class StartseiteView {
 
 	private String suchbegriff;
+	
+	@ManagedProperty("#{veranstaltungService}")
+	private VeranstaltungService veranstaltungService;
+	
 
 	public String suchen() {
 		return "anwendersuchergebnisse.jsf";
 	}
 
-
-	@ManagedProperty("#{veranstaltungService}")
-	private VeranstaltungService veranstaltungService;
 
 	public List<Veranstaltung> getVeranstaltungen() {
 		return veranstaltungService.getAll();

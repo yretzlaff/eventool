@@ -7,7 +7,10 @@ public class Veranstaltung {
 	private String name;
 	private String ort;
 	private String beschreibung;
+	private User manager;
 	private Date datum;
+	private int uhrzeit;
+	private boolean oeffentlich;
 	private int gesamtTicketanzahl;
 
 	
@@ -88,6 +91,42 @@ public class Veranstaltung {
 	 */
 	public void setGesamtTicketanzahl(int gesamtTicketanzahl) {
 		this.gesamtTicketanzahl = gesamtTicketanzahl;
+	}
+	/**
+	 * @return the manager
+	 */
+	public User getManager() {
+		return manager;
+	}
+	/**
+	 * @param manager the manager to set
+	 */
+	public void setManager(User manager) {
+		this.manager = manager;
+	}
+	/**
+	 * @return the uhrzeit
+	 */
+	public int getUhrzeit() {
+		return uhrzeit;
+	}
+	/**
+	 * @param uhrzeit the uhrzeit to set
+	 */
+	public void setUhrzeit(int uhrzeit) {
+		this.uhrzeit = uhrzeit;
+	}
+	/**
+	 * @return the oeffentlich
+	 */
+	public boolean isOeffentlich() {
+		return oeffentlich;
+	}
+	/**
+	 * @param oeffentlich the oeffentlich to set
+	 */
+	public void setOeffentlich(boolean oeffentlich) {
+		this.oeffentlich = oeffentlich;
 	}
 
 }

@@ -3,7 +3,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>eventool - Managerevents</title>
@@ -20,10 +21,37 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<h:form>
 		<div>
 			<p:commandButton action="#{managereventsView.neueVeranstaltung}"
-				value="Eventsuche" styleclass="smallButton">
+				value="Neues Event anlegen" styleclass="smallButton">
 			</p:commandButton>
 		</div>
 	</h:form>
 
+	<h:form id="form">
+
+
+		<p:dataTable var="veranstaltung"
+			value="#{managereventsView.veranstaltungen}"
+			style="margin-bottom:40px">
+			<f:facet name="header" >
+				Meine Events
+			</f:facet>
+			<p:column headerText="Name" sortBy="#{veranstaltung.name}">
+				<h:outputText value="#{veranstaltung.name}" />
+			</p:column>
+
+			<p:column headerText="Ort" sortBy="#{veranstaltung.ort}">
+				<h:outputText value="#{veranstaltung.ort}" />
+			</p:column>
+
+			<p:column headerText="Beschreibung" sortBy="#{veranstaltung.beschreibung}">
+				<h:outputText value="#{veranstaltung.beschreibung}" />
+			</p:column>
+			
+			<p:column headerText="Bearbeiten">
+				<p:commandButton icon="ui-icon-star" title="Event bearbeiten" action="#{managereventsView.bearbeiten}" />
+			</p:column>
+			
+		</p:dataTable>
+	</h:form>
 </body>
 </html>
