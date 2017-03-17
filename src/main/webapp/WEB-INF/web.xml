@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>cupertino</param-value>
+		<param-name>primefaces.THEMES</param-name>
+		<param-value>humanity</param-value>
 	</context-param>
 </web-app>
