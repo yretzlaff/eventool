@@ -43,8 +43,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<f:facet name="footer">
 							<h:outputText value="Ende" />
 						</f:facet>
-						<p:dataScroller value="#{startseiteView.veranstaltungen}"
-							var="veranstaltung" mode="inline" chunkSize="10">
+						<p:dataScroller value="#{startseiteView.neuesteVeranstaltungen}"
+							var="veranstaltungneu" mode="inline" chunkSize="2">
 
 							<h:panelGrid columns="2" style="width:100%"
 								columnClasses="logo,detail">
@@ -54,15 +54,15 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 								<p:outputPanel>
 									<h:panelGrid columns="2" cellpadding="5">
 										<h:outputText value="Name:" />
-										<h:outputText value="#{veranstaltung.name}"
+										<h:outputText value="#{veranstaltungneu.name}"
 											style="font-weight: bold" />
 
 										<h:outputText value="Ort:" />
-										<h:outputText value="#{veranstaltung.ort}"
+										<h:outputText value="#{veranstaltungneu.ort}"
 											style="font-weight: bold" />
 
 										<h:outputText value="Beschreibung:" />
-										<h:outputText value="#{veranstaltung.beschreibung}"
+										<h:outputText value="#{veranstaltungneu.beschreibung}"
 											style="font-weight: bold" />
 									</h:panelGrid>
 								</p:outputPanel>
@@ -81,24 +81,30 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<f:facet name="footer">
 							<h:outputText value="Ende" />
 						</f:facet>
-						<p:dataScroller value="#{startseiteView.veranstaltungen}"
-							var="veranstaltung" mode="inline" chunkSize="10">
+						<p:dataScroller value="#{startseiteView.naechsteVeranstaltungen}"
+							var="veranstaltungnaechste" mode="inline" chunkSize="2">
 
-							<p:outputPanel>
-								<h:panelGrid columns="2" cellpadding="5">
-									<h:outputText value="Name:" />
-									<h:outputText value="#{veranstaltung.name}"
-										style="font-weight: bold" />
+							<h:panelGrid columns="2" style="width:100%"
+								columnClasses="logo,detail">
+								<p:button icon="ui-icon-star"
+									value="Hier Bild" title="Bild">
+								</p:button>
+								<p:outputPanel>
+									<h:panelGrid columns="2" cellpadding="5">
+										<h:outputText value="Name:" />
+										<h:outputText value="#{veranstaltungnaechste.name}"
+											style="font-weight: bold" />
 
-									<h:outputText value="Ort:" />
-									<h:outputText value="#{veranstaltung.ort}"
-										style="font-weight: bold" />
+										<h:outputText value="Ort:" />
+										<h:outputText value="#{veranstaltungnaechste.ort}"
+											style="font-weight: bold" />
 
-									<h:outputText value="Beschreibung:" />
-									<h:outputText value="#{veranstaltung.beschreibung}"
-										style="font-weight: bold" />
-								</h:panelGrid>
-							</p:outputPanel>
+										<h:outputText value="Beschreibung:" />
+										<h:outputText value="#{veranstaltungnaechste.beschreibung}"
+											style="font-weight: bold" />
+									</h:panelGrid>
+								</p:outputPanel>
+							</h:panelGrid>
 
 							<f:facet name="loader">
 								<p:commandButton type="button" value="Weitere Laden" />

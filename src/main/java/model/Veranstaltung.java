@@ -8,7 +8,9 @@ public class Veranstaltung {
 	private String ort;
 	private String beschreibung;
 	private User manager;
-	private Date datum;
+	private Date veranstaltungsDatum;
+	private Date anlageDatum;
+	//Wofür Uhrzeit, ist das nicht in Date mit drin?
 	private int uhrzeit;
 	private boolean oeffentlich;
 	private int gesamtTicketanzahl;
@@ -18,7 +20,8 @@ public class Veranstaltung {
 		this.name = name;
 		this.ort = ort;		
 		this.beschreibung = beschreibung;
-		this.datum = datum;
+		this.veranstaltungsDatum = datum;
+		this.anlageDatum = new Date();
 		
 	}
 	/**
@@ -69,16 +72,22 @@ public class Veranstaltung {
 	/**
 	 * @return the datum
 	 */
-	public Date getDatum() {
-		return datum;
+	public Date getVeranstaltungsDatum() {
+		return veranstaltungsDatum;
 	}
 
 	/**
 	 * @param datum
 	 *            the datum to set
 	 */
-	public void setDatum(Date datum) {
-		this.datum = datum;
+	public void setVeranstaltungsDatum(Date datum) {
+		this.veranstaltungsDatum = datum;
+	}
+	public Date getAnlageDatum() {
+		return anlageDatum;
+	}
+	public void setAnlageDatum(Date anlageDatum) {
+		this.anlageDatum = anlageDatum;
 	}
 	/**
 	 * @return the gesamtTicketanzahl

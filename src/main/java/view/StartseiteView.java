@@ -27,6 +27,14 @@ public class StartseiteView {
 	public List<Veranstaltung> getVeranstaltungen() {
 		return veranstaltungService.getAll();
 	}
+	
+	public List<Veranstaltung> getNaechsteVeranstaltungen() {
+		return veranstaltungService.getAllNextFirst();
+	}
+	
+	public List<Veranstaltung> getNeuesteVeranstaltungen() {
+		return veranstaltungService.getAllNewestFirst();
+	}
 
 	public void setVeranstaltungService(VeranstaltungService service) {
 		this.veranstaltungService = service;
