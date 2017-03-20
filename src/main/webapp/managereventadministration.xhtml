@@ -6,14 +6,61 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>eventool - Event anpassen</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>eventool - Event anpassen</title>
 </h:head>
 <body>
 	<h1>
 		<p:outputLabel value="Eventdetails anpassen"></p:outputLabel>
 	</h1>
-	
-	Hier geht's weiter
+
+	<h:messages />
+
+
+	<p:panel id="basic" header="Eventdetails" style="margin-bottom:20px">
+		<table>
+
+			<tr>
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:button value="Bildtest!">
+						</p:button>
+					</h:panelGrid></td>
+
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:inputText value="Titel"></p:inputText>
+
+						<p:inputTextarea rows="5" cols="30" counter="display"
+							maxlength="140" counterTemplate="{0} characters remaining."
+							autoResize="false" value="Beschreibung" />
+						<h:outputText id="display" />
+					</h:panelGrid></td>
+
+			</tr>
+			<tr>
+				<td><h:outputLabel id="platzhalter"></h:outputLabel></td>
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:calendar mode="inline" />
+						<p:inputText value="Ort"></p:inputText>
+						<div>
+							<h:panelGrid columns="2" cellpadding="10">
+								<p:inputText value="Preis"></p:inputText>
+								<p:outputLabel>Euro</p:outputLabel>
+							</h:panelGrid>
+						</div>
+						<p:inputText value="Ticketanzahl"></p:inputText>
+						<h:panelGrid columns="2" cellpadding="10">
+							<p:selectBooleanCheckbox id="oeff"></p:selectBooleanCheckbox>
+							<p:outputLabel> oeffentlich?</p:outputLabel>
+						</h:panelGrid>
+						<h:form>
+							<p:commandButton value="GO !"
+								action="#{managereventadministrationView.speichern}">
+							</p:commandButton>
+						</h:form>
+					</h:panelGrid></td>
+			</tr>
+
+		</table>
+	</p:panel>
 </body>
 </html>
