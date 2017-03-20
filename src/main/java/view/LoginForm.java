@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import service.LoginService;
+import service.ManagerSessionService;
 
 @ManagedBean
 @RequestScoped
@@ -15,7 +15,7 @@ public class LoginForm {
 	private String password;
 
 	@ManagedProperty("#{loginService}")
-	private LoginService loginService;
+	private ManagerSessionService loginService;
 
 	public String login() {
 		if (loginService.login(username, password)) {
@@ -50,11 +50,11 @@ public class LoginForm {
 		return password;
 	}
 
-	public LoginService getLoginService() {
+	public ManagerSessionService getLoginService() {
 		return loginService;
 	}
 
-	public void setLoginService(LoginService loginService) {
+	public void setLoginService(ManagerSessionService loginService) {
 		this.loginService = loginService;
 	}
 }

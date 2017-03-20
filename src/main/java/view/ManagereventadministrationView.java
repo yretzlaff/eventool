@@ -4,6 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import model.Veranstaltung;
 import service.VeranstaltungService;
 
 
@@ -11,6 +12,7 @@ import service.VeranstaltungService;
 @RequestScoped
 public class ManagereventadministrationView {
 
+	private Veranstaltung veranst;
 	
 	@ManagedProperty("#{veranstaltungService}")
 	private VeranstaltungService veranstaltungService;
@@ -26,6 +28,22 @@ public class ManagereventadministrationView {
 
 	public VeranstaltungService getVeranstaltungService() {
 		return veranstaltungService;
+	}
+
+
+	/**
+	 * @return the veranst
+	 */
+	public Veranstaltung getVeranst() {
+		return veranst;
+	}
+
+
+	/**
+	 * @param veranst the veranst to set
+	 */
+	public void setVeranst(Veranstaltung veranst) {
+		this.veranst = veranst;
 	}
 
 }
