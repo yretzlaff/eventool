@@ -19,7 +19,7 @@ public class ManagereventsView {
 
 
 	public String neueVeranstaltung() {
-		return "managereventregistrierungen.jsf";
+		return "managereventadministration.jsf";
 	}
 
 	/**
