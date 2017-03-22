@@ -9,15 +9,11 @@ import model.User;
 
 @ManagedBean
 @SessionScoped
-public class ManagerSessionService {
+public class LoginService {
 
 	private User activeUser;
-	
 	@ManagedProperty("#{userService}")
 	private UserService userService;
-	
-	@ManagedProperty("#{veranstaltungService}")
-	private VeranstaltungService veranstaltungService;
 	
 	public boolean login(String username, String password) {
 		Optional<User> userToLogin = userService.getUserByName(username);
