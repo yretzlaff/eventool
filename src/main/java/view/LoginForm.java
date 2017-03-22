@@ -1,21 +1,25 @@
 package view;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import model.User;
 import service.ManagerSessionService;
 
-@ManagedBean
+//@ManagedBean
+@Named
 @RequestScoped
 public class LoginForm {
 
 	private User user;
 	private String password;
 
-	@ManagedProperty("#{managerSessionService}")
+	//@ManagedProperty("#{managerSessionService}")
+	@Inject
 	private ManagerSessionService managerSessionService;
 
 	public String login() {

@@ -1,16 +1,16 @@
 package service;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
 
 import model.User;
 
+
 @ApplicationScoped
-@ManagedBean
-public class UserService {
+public class UserService implements Serializable{
 
 	private List<User> users;
 

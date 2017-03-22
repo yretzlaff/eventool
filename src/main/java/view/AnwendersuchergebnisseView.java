@@ -5,24 +5,29 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import model.Veranstaltung;
 import service.AnwenderSessionService;
 import service.VeranstaltungService;
 
-@ManagedBean
+//@ManagedBean
+@Named
 @RequestScoped
 public class AnwendersuchergebnisseView {
 
 	
 
-	@ManagedProperty("#{veranstaltungService}")
+	//@ManagedProperty("#{veranstaltungService}")
+	@Inject
 	private VeranstaltungService veranstaltungService;
 
-	@ManagedProperty("#{anwenderSessionService}")
+	//@ManagedProperty("#{anwenderSessionService}")
+	@Inject
 	private AnwenderSessionService anwenderSessionService;
 	
 	private Map<String, String> orte = new HashMap<String, String>();

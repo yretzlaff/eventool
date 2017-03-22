@@ -1,15 +1,18 @@
 package service;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 
 import model.Veranstaltung;
 
-@ManagedBean
+
+@Named
 @SessionScoped
-public class AnwenderSessionService {
+public class AnwenderSessionService implements Serializable{
 	private String suchbegriff;
 	private String suchort;
 	private Date suchdatum;

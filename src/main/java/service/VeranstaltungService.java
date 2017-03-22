@@ -1,5 +1,6 @@
 package service;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,14 +10,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import model.*;
 
-@ManagedBean(name = "veranstaltungService")
+
 @ApplicationScoped
-public class VeranstaltungService {
+public class VeranstaltungService implements Serializable{
 
 	@SuppressWarnings("deprecation")
 	public VeranstaltungService() throws InterruptedException {

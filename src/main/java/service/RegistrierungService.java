@@ -1,11 +1,13 @@
 package service;
 
-import javax.faces.bean.ApplicationScoped;
+
+import java.io.Serializable;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 
-@ManagedBean(name = "registrierungService")
 @ApplicationScoped
-public class RegistrierungService {
+public class RegistrierungService implements Serializable{
 
 }

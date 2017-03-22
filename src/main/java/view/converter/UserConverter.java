@@ -14,12 +14,14 @@ import service.UserService;
 
 
 
-@ManagedBean
+//@ManagedBean
+@Named
 @ApplicationScoped
 public class UserConverter implements Converter {
 
 
-	@ManagedProperty("#{userService}")
+	//@ManagedProperty("#{userService}")
+	@Inject
 	private UserService userService;
 	
 	@Override

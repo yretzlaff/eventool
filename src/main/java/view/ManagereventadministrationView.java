@@ -1,19 +1,23 @@
 package view;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import model.Veranstaltung;
 import service.VeranstaltungService;
 
 
-@ManagedBean
+//@ManagedBean
+@Named
 @RequestScoped
 public class ManagereventadministrationView {
 
 	
-	@ManagedProperty("#{veranstaltungService}")
+	//@ManagedProperty("#{veranstaltungService}")
+	@Inject
 	private VeranstaltungService veranstaltungService;
 
 	

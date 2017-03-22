@@ -2,22 +2,27 @@ package view;
 
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import service.AnwenderSessionService;
 import service.VeranstaltungService;
 import model.Veranstaltung;
 
-@ManagedBean
+//@ManagedBean
+@Named
 @RequestScoped
 public class StartseiteView {
 	
-	@ManagedProperty("#{veranstaltungService}")
+	//@ManagedProperty("#{veranstaltungService}")
+	@Inject
 	private VeranstaltungService veranstaltungService;
 	
-	@ManagedProperty("#{anwenderSessionService}")
+	//@ManagedProperty("#{anwenderSessionService}")
+	@Inject
 	private AnwenderSessionService anwenderSessionService;
 	
 

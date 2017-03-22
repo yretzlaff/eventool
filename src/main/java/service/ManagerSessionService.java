@@ -1,21 +1,23 @@
 package service;
+import java.io.Serializable;
 import java.util.Optional;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import model.User;
 
-@ManagedBean
+
+@Named
 @SessionScoped
-public class ManagerSessionService {
+public class ManagerSessionService implements Serializable{
 
 	private User activeUser;
-	@ManagedProperty("#{userService}")
-	private UserService userService;
+
 	
 	public void login(User user) {
 		
@@ -32,11 +34,4 @@ public class ManagerSessionService {
 		this.activeUser = activeUser;
 	}
 
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
 }
