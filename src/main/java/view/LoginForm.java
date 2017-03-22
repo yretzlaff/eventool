@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import service.LoginService;
+import service.ManagerSessionService;
 
 @ManagedBean
 @RequestScoped
@@ -14,11 +14,11 @@ public class LoginForm {
 	private String username;
 	private String password;
 
-	@ManagedProperty("#{loginService}")
-	private LoginService loginService;
+	@ManagedProperty("#{managerSessionService}")
+	private ManagerSessionService managerSessionService;
 
 	public String login() {
-		if (loginService.login(username, password)) {
+		if (managerSessionService.login(username, password)) {
 			System.out.println("Login erfolgreich!");
 			return "managerevents.jsf";
 		}
@@ -50,11 +50,11 @@ public class LoginForm {
 		return password;
 	}
 
-	public LoginService getLoginService() {
-		return loginService;
+	public ManagerSessionService getManagerSessionService() {
+		return managerSessionService;
 	}
 
-	public void setLoginService(LoginService loginService) {
-		this.loginService = loginService;
+	public void setManagerSessionService(ManagerSessionService managerSessionService) {
+		this.managerSessionService = managerSessionService;
 	}
 }

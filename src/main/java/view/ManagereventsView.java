@@ -33,7 +33,8 @@ public class ManagereventsView {
 		return veranstaltungService.getAll();
 	}
 	
-	public String bearbeiten(){
+	public String bearbeiten(Veranstaltung veranstaltung){
+		System.out.println("Bearbeiten: " + veranstaltung.getName());
 		return "managereventadministration.jsf";
 	}
 

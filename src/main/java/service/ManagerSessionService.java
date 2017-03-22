@@ -9,7 +9,7 @@ import model.User;
 
 @ManagedBean
 @SessionScoped
-public class LoginService {
+public class ManagerSessionService {
 
 	private User activeUser;
 	@ManagedProperty("#{userService}")
