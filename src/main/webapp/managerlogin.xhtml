@@ -3,6 +3,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -16,18 +17,25 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 	<h:messages />
 
-
 	<h:form>
-		<div>
-			<p:outputLabel value="Username: "></p:outputLabel>
-			<p:inputText value="#{loginForm.username}"></p:inputText>
-		</div>
-		<div>
-			<p:outputLabel value="Passwort: "></p:outputLabel>
-			<p:password value="#{loginForm.password}"></p:password>
-		</div>
-		<p:commandButton action="#{loginForm.login}" value="Login">
-		</p:commandButton>
+		<table>
+			<tr>
+				<td><p:outputLabel value="Username: "></p:outputLabel></td>
+				<td><p:inputText value="#{loginForm.user}">
+						<f:converter binding="#{userConverter}" />
+					</p:inputText></td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="Passwort: "></p:outputLabel></td>
+				<td><p:password value="#{loginForm.password}"></p:password></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><p:commandButton action="#{loginForm.login}" value="Login">
+					</p:commandButton></td>
+			</tr>
+		</table>
 	</h:form>
+
 </body>
 </html>

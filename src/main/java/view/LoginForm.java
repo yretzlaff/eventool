@@ -5,22 +5,29 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import model.User;
 import service.ManagerSessionService;
 
 @ManagedBean
 @RequestScoped
 public class LoginForm {
 
-	private String username;
+	private User user;
 	private String password;
 
 	@ManagedProperty("#{managerSessionService}")
 	private ManagerSessionService managerSessionService;
 
 	public String login() {
-		if (managerSessionService.login(username, password)) {
-			System.out.println("Login erfolgreich!");
-			return "managerevents.jsf";
+		System.out.println("<< doLogin() " + (user != null ? user.getName() : "KEIN USER") + " " + password);
+		
+		if (user != null) {
+			if (user.checkPassword(this.password)) {
+				getManagerSessionService().login(user);
+				System.out.println("<< Login erfolgreich!");
+				return "managerevents.jsf";
+			}
+			
 		}
 		FacesContext.getCurrentInstance().addMessage(
 				"",
@@ -32,14 +39,6 @@ public class LoginForm {
 
 	public String register() {
 		return "register.jsf";
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public void setPassword(String password) {
@@ -56,5 +55,19 @@ public class LoginForm {
 
 	public void setManagerSessionService(ManagerSessionService managerSessionService) {
 		this.managerSessionService = managerSessionService;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

@@ -1,9 +1,11 @@
 package service;
 import java.util.Optional;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import model.User;
 
@@ -15,15 +17,11 @@ public class ManagerSessionService {
 	@ManagedProperty("#{userService}")
 	private UserService userService;
 	
-	public boolean login(String username, String password) {
-		Optional<User> userToLogin = userService.getUserByName(username);
-		if (userToLogin.isPresent()) {
-			if (password.equals(userToLogin.get().getPassword())) {
-				activeUser = userToLogin.get();
-				return true;
-			}
-		}
-		return false;
+	public void login(User user) {
+		
+		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login successful", ""));
+		System.out.println("Login user with username " + user.getName());
+		activeUser = user;
 	}
 
 	public User getActiveUser() {

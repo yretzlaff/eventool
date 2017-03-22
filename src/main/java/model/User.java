@@ -12,6 +12,11 @@ public class User {
 		this.email = email;
 	}
 	
+	public boolean checkPassword(String password) {
+		// TODO: Hier sollte natuerlich mehr als nur der String verglichen werden -> Hashing
+		return this.password.equals(password);
+	}
+	
 	public String getName() {
 		return name;
 	}
