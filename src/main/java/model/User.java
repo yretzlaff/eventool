@@ -1,7 +1,16 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
+	@GeneratedValue
+	@Id
+	private Long id;
+	
 	private String name;
 	private String password;
 	private String email;
