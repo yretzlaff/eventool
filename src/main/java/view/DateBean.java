@@ -2,6 +2,7 @@ package view;
 
 import java.util.Date;
 
+//Kann WEG!
 public class DateBean {
 	private Date date;
 

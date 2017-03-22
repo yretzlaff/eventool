@@ -6,9 +6,37 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:p="http://primefaces.org/ui">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>eventool</title>
 </head>
 <body>
+	<h1>
+		<p:outputLabel value="Eventdetails"></p:outputLabel>
+	</h1>
 
+	<h:messages />
+
+
+	<p:panel id="basic" header="Eventdetails" style="margin-bottom:20px">
+		<table>
+
+			<tr>
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:button value="Bildtest!">
+						</p:button>
+					</h:panelGrid></td>
+
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<h1>
+							<p:outputLabel
+								value="#{anwenderSessionService.veranstaltungsAuswahl.name}"></p:outputLabel>
+						</h1>
+					</h:panelGrid></td>
+
+			</tr>
+			<tr>
+			</tr>
+
+		</table>
+	</p:panel>
 </body>
 </html>

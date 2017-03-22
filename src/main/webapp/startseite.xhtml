@@ -27,10 +27,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	</div>
 	<h:form>
 		<div>
-			<p:inputText value="#{startseiteView.suchbegriff}"></p:inputText>
+			<p:inputText value="#{startseiteView.anwenderSessionService.suchbegriff}"></p:inputText>
 
 			<p:commandButton action="#{startseiteView.suchen}" value="Eventsuche"
-				styleclass="smallButton">
+				styleclass="smallButton" ajax="false">
 			</p:commandButton>
 		</div>
 	</h:form>
@@ -40,12 +40,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<td>
 				<div class="left">
 					<p:panel header="Neueste Veranstaltungen: ">
-						<f:facet name="footer">
-							<h:outputText value="Ende" />
-						</f:facet>
 						<p:dataScroller value="#{startseiteView.neuesteVeranstaltungen}"
-							var="veranstaltungneu" mode="inline" chunkSize="2">
-
+							var="veranstaltungneu" mode="document" chunkSize="2">
 							<h:panelGrid columns="2" style="width:100%"
 								columnClasses="logo,detail">
 								<p:button icon="ui-icon-star"
@@ -78,9 +74,6 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<td>
 				<div class="right">
 					<p:panel header="Naechste Veranstaltungen: ">
-						<f:facet name="footer">
-							<h:outputText value="Ende" />
-						</f:facet>
 						<p:dataScroller value="#{startseiteView.naechsteVeranstaltungen}"
 							var="veranstaltungnaechste" mode="inline" chunkSize="2">
 

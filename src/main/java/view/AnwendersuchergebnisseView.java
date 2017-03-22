@@ -10,27 +10,41 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import model.Veranstaltung;
+import service.AnwenderSessionService;
 import service.VeranstaltungService;
 
 @ManagedBean
 @RequestScoped
 public class AnwendersuchergebnisseView {
 
-	private String suchbegriff;
+	
 
 	@ManagedProperty("#{veranstaltungService}")
 	private VeranstaltungService veranstaltungService;
 
-	private String ort;
+	@ManagedProperty("#{anwenderSessionService}")
+	private AnwenderSessionService anwenderSessionService;
+	
 	private Map<String, String> orte = new HashMap<String, String>();
+	private List<Veranstaltung> treffer;
 
 	public String suchen() {
-
 		return "anwendersuchergebnisse.jsf";
 	}
+	
+	public String eventdetails(Veranstaltung event)	{
+		anwenderSessionService.setVeranstaltungsAuswahl(event);
+		System.out.println("Testausgabe, ob Funktion ausgeführt wird!");
+		return "anwendereventdetails.jsf";
+	}
 
-	public List<Veranstaltung> getVeranstaltungen() {
+	public List<Veranstaltung> getTreffer() {
+		//später hier die treffer
 		return veranstaltungService.getAll();
+	}
+	
+	public void setTreffer(List<Veranstaltung> treffer)	{
+		this.treffer = treffer;
 	}
 
 	public Map<String, String> getOrte() {
@@ -49,27 +63,12 @@ public class AnwendersuchergebnisseView {
 		return veranstaltungService;
 	}
 
-	public String getSuchbegriff() {
-		return suchbegriff;
+	public AnwenderSessionService getAnwenderSessionService() {
+		return anwenderSessionService;
 	}
 
-	public void setSuchbegriff(String suchbegriff) {
-		this.suchbegriff = suchbegriff;
+	public void setAnwenderSessionService(
+			AnwenderSessionService anwenderSessionService) {
+		this.anwenderSessionService = anwenderSessionService;
 	}
-
-	/**
-	 * @return the ort
-	 */
-	public String getOrt() {
-		return ort;
-	}
-
-	/**
-	 * @param ort
-	 *            the ort to set
-	 */
-	public void setOrt(String ort) {
-		this.ort = ort;
-	}
-
 }
