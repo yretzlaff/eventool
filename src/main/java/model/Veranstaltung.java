@@ -2,8 +2,18 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+@Entity
 public class Veranstaltung {
 
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	private String name;
 	private String ort;
 	private String beschreibung;
