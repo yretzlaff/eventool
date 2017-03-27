@@ -1,6 +1,7 @@
 package model;
 
 import javax.interceptor.ExcludeDefaultInterceptors;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,9 +13,14 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
+	@Column
 	private String name;
+	
+	@Column
 	private String password;
+	
+	@Column 
 	private String email;
 
 	public User(String user, String password, String email) {

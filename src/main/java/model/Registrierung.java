@@ -1,7 +1,15 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Registrierung {
 
+	
+	@Id
+	@GeneratedValue
 	private int id;
 	private String KundenName;
 	private int anzahlTickets;
