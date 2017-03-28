@@ -4,19 +4,20 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>eventool</title>
-</head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>eventool</title>
+</h:head>
 <body>
 	<h1>
-		<p:outputLabel value="Eventdetails"></p:outputLabel>
+		<p:outputLabel value="eventool"></p:outputLabel>
 	</h1>
-
 	<h:messages />
 
 
-	<p:panel id="basic" header="Eventdetails" style="margin-bottom:20px">
+	<p:panel id="basic"
+		header="#{anwenderSessionService.veranstaltungsAuswahl.name}"
+		style="margin-bottom:20px">
 		<table>
 
 			<tr>
@@ -26,17 +27,46 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</h:panelGrid></td>
 
 				<td><h:panelGrid columns="1" cellpadding="10">
-						<h1>
-							<p:outputLabel
-								value="#{anwenderSessionService.veranstaltungsAuswahl.name}"></p:outputLabel>
-						</h1>
+						<p:outputLabel
+							value="#{anwenderSessionService.veranstaltungsAuswahl.beschreibung}"></p:outputLabel>
 					</h:panelGrid></td>
+
 
 			</tr>
 			<tr>
+				<td></td>
+
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:outputLabel
+							value="#{anwenderSessionService.veranstaltungsAuswahl.ort}"></p:outputLabel>
+					</h:panelGrid></td>
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:outputLabel
+							value="#{anwenderSessionService.veranstaltungsAuswahl.veranstaltungsDatum}"></p:outputLabel>
+					</h:panelGrid></td>
 			</tr>
 
 		</table>
 	</p:panel>
+	<h:form>
+		<p:panel id="booking" header="Jetzt reservieren:"
+			style="margin-bottom:20px">
+
+
+			<h:panelGrid columns="3" cellpadding="5">
+				<p:outputLabel value="Name: " />
+				<p:inputText value="Name"></p:inputText>
+				<p:outputLabel value="" />
+				<p:outputLabel value="Tickets: " />
+				<p:inputText value="Anzahl"></p:inputText>
+				<p:outputLabel value="Max.: #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
+			</h:panelGrid>
+			<p:separator />
+			<p:commandButton value="Reservieren!"
+				action="#{anwendereventdetailsView.reservieren}"
+				icon="ui-icon-check" />
+
+		</p:panel>
+	</h:form>
 </body>
 </html>
