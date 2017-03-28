@@ -15,6 +15,11 @@ public class Registrierung {
 	private int anzahlTickets;
 	private Veranstaltung veranstaltung;
 
+	public Registrierung(){
+		
+	}
+	
+	
 	public Registrierung(int id, String name, int tickets,
 			Veranstaltung veranstaltung) {
 		this.id = id;

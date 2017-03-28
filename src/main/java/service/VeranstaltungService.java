@@ -12,15 +12,21 @@ import java.util.Map;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import model.*;
 
 
 @ApplicationScoped
 public class VeranstaltungService implements Serializable{
+	
+	@Inject
+	private EntityManager entityManager;
 
 	@SuppressWarnings("deprecation")
-	public VeranstaltungService() throws InterruptedException {
+	public VeranstaltungService() throws Exception {
 		
 // Testweise Veranstaltungen hinzufügen!
 // Zzt. noch Thread.sleep drin, da der sonst auf der Startseite mit den Sortierungen für Neueste veranstaltung durcheinanderkommt bei fast gleichen Zeitstempeln
@@ -55,10 +61,22 @@ public class VeranstaltungService implements Serializable{
 	public List<Veranstaltung> getAll() {
 		return this.veranstaltungen;
 	}
+
+	/**
+	@Transactional
+	public Veranstaltung addVeranstaltung(Veranstaltung veranstalt) throws Exception {
+		this.entityManager.persist(veranstalt);
+		return veranstalt;
+	}
+	
+	
+	**/
 	
 	public List<Veranstaltung> getToManager(User manager){
 		return this.veranstaltungen;
 	}
+	
+	
 	
 	
 	public Veranstaltung addVeranstaltung(Veranstaltung veranst) {
@@ -67,6 +85,7 @@ public class VeranstaltungService implements Serializable{
 		veranstaltungen.add(veranst);
 		return veranst;
 	}
+
 
 	public List<Veranstaltung> getAllNextFirst() {
 		List<Veranstaltung> nextVeranstaltungen = this.veranstaltungen;
@@ -88,6 +107,20 @@ public class VeranstaltungService implements Serializable{
 			};
 		});
 		return newestVeranstaltungen;
+	}
+
+	/**
+	 * @return the entityManager
+	 */
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	/**
+	 * @param entityManager the entityManager to set
+	 */
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 
 }

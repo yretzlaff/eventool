@@ -1,32 +1,37 @@
 package model;
 
-import javax.interceptor.ExcludeDefaultInterceptors;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "USER")
 public class User {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@Column
+	@Column(name = "NAME",length=255)
 	private String name;
 	
-	@Column
+	@Column(name="PASSWORD",length=255)
 	private String password;
 	
-	@Column 
+	@Column(name="EMAIL",length=255)
 	private String email;
 
 	public User(String user, String password, String email) {
 		this.name = user;
 		this.password = password;
 		this.email = email;
+	}
+	
+	public User(){
+		
 	}
 	
 	public boolean checkPassword(String password) {

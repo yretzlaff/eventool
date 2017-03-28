@@ -50,12 +50,7 @@ public class UserService implements Serializable{
 	
 	
 	public Optional<User> getUserByName(String name) {
-		try {
-			addUser(new User("admin", "admin", "admintest.de"));
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+	
 		TypedQuery<User> query = entityManager.createQuery(
 				"SELECT u FROM User u where u.name = :name", User.class);
 		query.setParameter("name", name);

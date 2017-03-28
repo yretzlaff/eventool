@@ -26,6 +26,13 @@ public class Veranstaltung {
 	private int gesamtTicketanzahl;
 
 	
+	
+	public Veranstaltung(){
+		
+		
+	}
+	
+	
 	public Veranstaltung(String name, String ort, String beschreibung, Date datum){
 		this.name = name;
 		this.ort = ort;		
