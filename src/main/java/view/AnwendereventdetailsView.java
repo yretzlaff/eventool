@@ -52,8 +52,28 @@ public class AnwendereventdetailsView {
 		this.registrierungService = registrierungService;
 	}
 	
+	private String reservierungsName;
+	private int auswahlTicketAnzahl;
+	
 	public String reservieren()	{
+		registrierungService.addReservierung(reservierungsName, auswahlTicketAnzahl, anwenderSessionService.getVeranstaltungsAuswahl());
 		return "anwendereventdetailsView.jsf";
+	}
+
+	public String getReservierungsName() {
+		return reservierungsName;
+	}
+
+	public void setReservierungsName(String reservierungsName) {
+		this.reservierungsName = reservierungsName;
+	}
+
+	public int getAuswahlTicketAnzahl() {
+		return auswahlTicketAnzahl;
+	}
+
+	public void setAuswahlTicketAnzahl(int auswahlTicketAnzahl) {
+		this.auswahlTicketAnzahl = auswahlTicketAnzahl;
 	}
 	
 }

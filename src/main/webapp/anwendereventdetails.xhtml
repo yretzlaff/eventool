@@ -12,7 +12,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<h1>
 		<p:outputLabel value="eventool"></p:outputLabel>
 	</h1>
-	<h:messages />
+	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 
 
 	<p:panel id="basic"
@@ -55,10 +55,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<h:panelGrid columns="3" cellpadding="5">
 				<p:outputLabel value="Name: " />
-				<p:inputText value="Name"></p:inputText>
+				<p:inputText value="#{anwendereventdetailsView.reservierungsName}"></p:inputText>
 				<p:outputLabel value="" />
 				<p:outputLabel value="Tickets: " />
-				<p:inputText value="Anzahl"></p:inputText>
+				<p:inputText value="#{anwendereventdetailsView.auswahlTicketAnzahl}"></p:inputText>
 				<p:outputLabel value="Max.: #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
 			</h:panelGrid>
 			<p:separator />

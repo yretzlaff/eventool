@@ -27,10 +27,7 @@ public class VeranstaltungService implements Serializable{
 
 	@SuppressWarnings("deprecation")
 	public VeranstaltungService() throws Exception {
-		
-// Testweise Veranstaltungen hinzufügen!
-// Zzt. noch Thread.sleep drin, da der sonst auf der Startseite mit den Sortierungen für Neueste veranstaltung durcheinanderkommt bei fast gleichen Zeitstempeln
-		
+				
 		Veranstaltung veranst = new Veranstaltung("KIZ-Konzert", "Dortmund",
 				"Das ist ein Konzert", new Date(2017, 11, 29, 21, 0));
 		addVeranstaltung(veranst);

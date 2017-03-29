@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import model.Veranstaltung;
+import service.ManagerSessionService;
 import service.VeranstaltungService;
 
 //@ManagedBean
@@ -22,6 +23,9 @@ public class ManagereventsView {
 	//@ManagedProperty("#{veranstaltungService}")
 	@Inject
 	private VeranstaltungService veranstaltungService;
+	
+	@Inject
+	private ManagerSessionService managerSessionService;
 
 
 	public String neueVeranstaltung() {
@@ -40,8 +44,15 @@ public class ManagereventsView {
 	}
 	
 	public String bearbeiten(Veranstaltung veranstaltung){
+		managerSessionService.setVeranstaltungsAuswahl(veranstaltung);
 		System.out.println("Bearbeiten: " + veranstaltung.getName());
 		return "managereventadministration.jsf";
+	}
+	
+	public String registrierungen(Veranstaltung veranstaltung){
+		managerSessionService.setVeranstaltungsAuswahl(veranstaltung);
+		System.out.println("Registrierungen ansehen: " + veranstaltung.getName());
+		return "managereventregistrierungen.jsf";
 	}
 
 	public void setVeranstaltungService(VeranstaltungService service) {
@@ -50,6 +61,14 @@ public class ManagereventsView {
 
 	public VeranstaltungService getVeranstaltungService() {
 		return veranstaltungService;
+	}
+
+	public ManagerSessionService getManagerSessionService() {
+		return managerSessionService;
+	}
+
+	public void setManagerSessionService(ManagerSessionService managerSessionService) {
+		this.managerSessionService = managerSessionService;
 	}
 
 }

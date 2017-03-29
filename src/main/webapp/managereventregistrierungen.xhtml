@@ -5,12 +5,64 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>eventool - Neues Event</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>eventool</title>
 </h:head>
 <body>
 	<h1>
-		<p:outputLabel value="Event anlegen"></p:outputLabel>
+		<p:outputLabel value="eventool"></p:outputLabel>
 	</h1>
+	<p:messages id="messages" showDetail="true" autoUpdate="true"
+		closable="true" />
+
+
+	<p:panel id="basic"
+		header="#{managerSessionService.veranstaltungsAuswahl.name}"
+		style="margin-bottom:20px">
+		<table>
+
+			<tr>
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:button value="Bildtest!">
+						</p:button>
+					</h:panelGrid></td>
+
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:outputLabel
+							value="#{managerSessionService.veranstaltungsAuswahl.beschreibung}"></p:outputLabel>
+					</h:panelGrid></td>
+
+
+			</tr>
+			<tr>
+				<td></td>
+
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:outputLabel
+							value="#{managerSessionService.veranstaltungsAuswahl.ort}"></p:outputLabel>
+					</h:panelGrid></td>
+				<td><h:panelGrid columns="1" cellpadding="10">
+						<p:outputLabel
+							value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}"></p:outputLabel>
+					</h:panelGrid></td>
+			</tr>
+
+		</table>
+	</p:panel>
+	<h:form>
+		<p:panel id="booking" header="Reservierungen:"
+			style="margin-bottom:20px">
+			<p:dataTable var="registrierung" value="#{managereventregistrierungenView.registrierungen}">
+
+				<p:column headerText="Name">
+					<h:outputText value="#{registrierung.name}" />
+				</p:column>
+
+				<p:column headerText="Anzahl">
+					<h:outputText value="#{registrierung.anzahl}" />
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
 </body>
 </html>

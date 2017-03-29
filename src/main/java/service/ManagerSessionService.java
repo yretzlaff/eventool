@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import model.User;
+import model.Veranstaltung;
 
 
 @Named
@@ -17,7 +18,9 @@ import model.User;
 public class ManagerSessionService implements Serializable{
 
 	private User activeUser;
+	private Veranstaltung veranstaltungsAuswahl;
 
+	
 	
 	public void login(User user) {
 		
@@ -32,6 +35,14 @@ public class ManagerSessionService implements Serializable{
 
 	public void setActiveUser(User activeUser) {
 		this.activeUser = activeUser;
+	}
+
+	public Veranstaltung getVeranstaltungsAuswahl() {
+		return veranstaltungsAuswahl;
+	}
+
+	public void setVeranstaltungsAuswahl(Veranstaltung veranstaltungsAuswahl) {
+		this.veranstaltungsAuswahl = veranstaltungsAuswahl;
 	}
 
 }

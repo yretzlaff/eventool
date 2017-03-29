@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import model.Veranstaltung;
+import service.ManagerSessionService;
 import service.VeranstaltungService;
 
 
@@ -20,6 +21,8 @@ public class ManagereventadministrationView {
 	@Inject
 	private VeranstaltungService veranstaltungService;
 
+	@Inject
+	private ManagerSessionService managerSessionService;
 	
 	private Veranstaltung veranstaltung;
 	
@@ -50,6 +53,16 @@ public class ManagereventadministrationView {
 	 */
 	public void setVeranstaltung(Veranstaltung veranstaltung) {
 		this.veranstaltung = veranstaltung;
+	}
+
+
+	public ManagerSessionService getManagerSessionService() {
+		return managerSessionService;
+	}
+
+
+	public void setManagerSessionService(ManagerSessionService managerSessionService) {
+		this.managerSessionService = managerSessionService;
 	}
 
 }
