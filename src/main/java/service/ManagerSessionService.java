@@ -24,7 +24,7 @@ public class ManagerSessionService implements Serializable{
 	
 	public void login(User user) {
 		
-		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login successful", ""));
+		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_INFO, "Login successful", ""));
 		System.out.println("Login user with username " + user.getName());
 		activeUser = user;
 	}

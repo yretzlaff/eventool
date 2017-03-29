@@ -15,23 +15,27 @@ import service.VeranstaltungService;
 
 @Named
 @RequestScoped
-
 public class AnwendereventdetailsView {
-	
+
 	@Inject
 	private VeranstaltungService veranstaltungService;
-	
+
 	@Inject
 	private RegistrierungService registrierungService;
-	
+
 	@Inject
 	private AnwenderSessionService anwenderSessionService;
+
+	public String zurueckZurSuche() {
+		return "anwendersuchergebnisse.jsf";
+	}
 
 	public VeranstaltungService getVeranstaltungService() {
 		return veranstaltungService;
 	}
 
-	public void setVeranstaltungService(VeranstaltungService veranstaltungService) {
+	public void setVeranstaltungService(
+			VeranstaltungService veranstaltungService) {
 		this.veranstaltungService = veranstaltungService;
 	}
 
@@ -48,18 +52,20 @@ public class AnwendereventdetailsView {
 		return registrierungService;
 	}
 
-	public void setRegistrierungService(RegistrierungService registrierungService) {
+	public void setRegistrierungService(
+			RegistrierungService registrierungService) {
 		this.registrierungService = registrierungService;
 	}
-	
+
 	private String reservierungsName;
 	private int auswahlTicketAnzahl;
-	
-	public String reservieren()	{
+
+	public String reservieren() {
 		Registrierung newReg = new Registrierung();
 		newReg.setKundenName(reservierungsName);
 		newReg.setAnzahlTickets(auswahlTicketAnzahl);
-		newReg.setVeranstaltung(anwenderSessionService.getVeranstaltungsAuswahl());
+		newReg.setVeranstaltung(anwenderSessionService
+				.getVeranstaltungsAuswahl());
 		registrierungService.addReservierung(newReg);
 		return "anwendereventdetailsView.jsf";
 	}
@@ -79,5 +85,5 @@ public class AnwendereventdetailsView {
 	public void setAuswahlTicketAnzahl(int auswahlTicketAnzahl) {
 		this.auswahlTicketAnzahl = auswahlTicketAnzahl;
 	}
-	
+
 }

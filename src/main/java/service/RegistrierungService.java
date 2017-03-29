@@ -37,9 +37,8 @@ public class RegistrierungService implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-						"Veranstaltung erstellt. Name:"
-								+ registrierung.getKundenName() + " Anzahl: "
-								+ registrierung.getAnzahlTickets()));
+						"Erfolgreich " + registrierung.getAnzahlTickets() + " Tickets reserviert! Persönliche Buchungs-ID: "
+								+ registrierung.getId()));
 	}
 
 	public List<Registrierung> getRegistrierungenFürVeranstaltung(

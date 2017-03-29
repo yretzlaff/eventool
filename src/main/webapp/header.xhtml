@@ -6,7 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <body>
-	<h:panelGrid columns="2" cellpadding="max">					
+	<h:panelGrid columns="6" cellpadding="max">					
 	<h:form>
 		<p:commandButton action="#{headerView.zurStartseite}" value="EVENTOOL"
 			styleclass="smallButton" ajax="false" icon="ui-icon-home">
@@ -14,7 +14,19 @@
 	</h:form>
 	<h:form>
 		<p:commandButton action="#{headerView.login}" value="Managerlogin"
-			styleclass="smallButton" ajax="false" icon="ui-icon-person">
+			styleclass="smallButton" ajax="false" icon="ui-icon-person" rendered="#{!headerView.istManagerEingeloggt()}">
+		</p:commandButton>
+	</h:form>
+	
+	<p:outputLabel value="Eingeloggt als #{headerView.managerSessionService.activeUser.name}" rendered="#{headerView.istManagerEingeloggt()}"></p:outputLabel>
+	<h:form>
+		<p:commandButton action="#{headerView.login}" value="Meine Events"
+			styleclass="smallButton" ajax="false" icon="ui-icon-person" rendered="#{headerView.istManagerEingeloggt()}">
+		</p:commandButton>
+	</h:form>
+	<h:form>
+		<p:commandButton action="#{headerView.logout}" value="Logout"
+			styleclass="smallButton" ajax="false" icon="ui-icon-power" rendered="#{headerView.istManagerEingeloggt()}">
 		</p:commandButton>
 	</h:form>
 	</h:panelGrid>

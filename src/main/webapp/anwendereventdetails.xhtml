@@ -13,8 +13,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<ui:include src="header.xhtml" />
 	<p:messages id="messages" showDetail="true" autoUpdate="true"
 		closable="true" />
-
-
+	<h:form>
+		<p:commandButton value="Zurueck zu den Suchergebnissen"
+			action="#{anwendereventdetailsView.zurueckZurSuche}" icon="ui-icon-arrowreturnthick-1-w"/>
+	</h:form>
 	<p:panel id="basic"
 		header="#{anwenderSessionService.veranstaltungsAuswahl.name}"
 		style="margin-bottom:20px">
@@ -43,7 +45,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<td><h:panelGrid columns="1" cellpadding="10">
 						<p:outputLabel
 							value="#{anwenderSessionService.veranstaltungsAuswahl.veranstaltungsDatum}">
-							<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>
+							<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
 						</p:outputLabel>
 					</h:panelGrid></td>
 			</tr>
@@ -65,7 +67,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					value="Max.: #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
 			</h:panelGrid>
 			<p:separator />
-			<p:commandButton value="Reservieren!"
+			<p:commandButton value="Verbindlich Reservieren!"
 				action="#{anwendereventdetailsView.reservieren}"
 				icon="ui-icon-check" />
 

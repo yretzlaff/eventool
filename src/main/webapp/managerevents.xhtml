@@ -22,7 +22,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<h:form>
 		<div>
 			<p:commandButton action="#{managereventsView.neueVeranstaltung}"
-				value="Neues Event anlegen" styleclass="smallButton" icon="ui-icon-plusthick">
+				value="Neues Event anlegen" styleclass="smallButton"
+				icon="ui-icon-plusthick">
 			</p:commandButton>
 		</div>
 	</h:form>
@@ -33,26 +34,34 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<p:dataTable var="veranstaltung"
 			value="#{managereventsView.veranstaltungen}"
 			style="margin-bottom:40px">
-			<f:facet name="header" >
+			<f:facet name="header">
 				Meine Events
 			</f:facet>
-			<p:column headerText="Name" sortBy="#{veranstaltung.name}">
+			<p:column headerText="Name">
 				<h:outputText value="#{veranstaltung.name}" />
 			</p:column>
 
-			<p:column headerText="Ort" sortBy="#{veranstaltung.ort}">
+			<p:column headerText="Ort">
 				<h:outputText value="#{veranstaltung.ort}" />
 			</p:column>
 
-			<p:column headerText="Beschreibung" sortBy="#{veranstaltung.beschreibung}">
+			<p:column headerText="Beschreibung">
 				<h:outputText value="#{veranstaltung.beschreibung}" />
 			</p:column>
-			
+
 			<p:column headerText="Bearbeiten">
-				<p:commandButton icon="ui-icon-pencil" title="Event bearbeiten" action="#{managereventsView.bearbeiten(veranstaltung)}" />
-				<p:commandButton icon="ui-icon-info" title="Registrierungen ansehen" action="#{managereventsView.registrierungen(veranstaltung)}" />
+				<p:commandButton rendered="#{veranstaltung.oeffentlich}"
+					title="Oeffentlich" icon="ui-icon-unlocked" disabled="true" />
+				<p:commandButton rendered="#{!veranstaltung.oeffentlich}"
+					title="Nicht Oeffentlich" icon="ui-icon-locked" disabled="true" />
+				<p:commandButton icon="ui-icon-pencil" title="Event bearbeiten"
+					action="#{managereventsView.bearbeiten(veranstaltung)}"
+					rendered="#{!veranstaltung.oeffentlich}" />
+				<p:commandButton icon="ui-icon-info" title="Registrierungen ansehen"
+					action="#{managereventsView.registrierungen(veranstaltung)}"
+					rendered="#{veranstaltung.oeffentlich}" />
 			</p:column>
-			
+
 		</p:dataTable>
 	</h:form>
 </body>

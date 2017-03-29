@@ -18,7 +18,12 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<p:messages id="messages" showDetail="true" autoUpdate="true"
 		closable="true" />
 
-
+	<h:form>
+		<p:commandButton value="Zurueck zur Eventuebersicht"
+			action="#{managereventadministrationView.zurueckZuEvents}"
+			icon="ui-icon-arrowreturnthick-1-w" />
+	</h:form>
+	
 	<p:panel id="basic" header="Eventdetails" style="margin-bottom:20px">
 		<h:form>
 			<table>
@@ -48,7 +53,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</h:panelGrid></td>
 				</tr>
 				<tr>
-				<td><p:outputLabel value="Uhrzeit: "></p:outputLabel></td>
+					<td><p:outputLabel value="Uhrzeit: "></p:outputLabel></td>
 					<td><p:inputText
 							value="#{managerSessionService.veranstaltungsAuswahl.uhrzeit}"></p:inputText>
 					</td>

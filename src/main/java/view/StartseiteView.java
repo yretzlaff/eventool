@@ -1,5 +1,6 @@
 package view;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -22,7 +23,6 @@ public class StartseiteView {
 	@Inject
 	private AnwenderSessionService anwenderSessionService;
 	
-
 	public String suchen() {
 		return "anwendersuchergebnisse.jsf";
 	}

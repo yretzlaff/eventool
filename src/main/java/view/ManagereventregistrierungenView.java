@@ -22,6 +22,10 @@ public class ManagereventregistrierungenView {
 	@Inject
 	private RegistrierungService registrierungService;
 
+	public String zurueckZuEvents()	{
+		return "managerevents.jsf";
+	}
+	
 	public List<Registrierung> getRegistrierungen() {
 		return registrierungService.getRegistrierungenFürVeranstaltung(managerSessionService.getVeranstaltungsAuswahl());
 	}

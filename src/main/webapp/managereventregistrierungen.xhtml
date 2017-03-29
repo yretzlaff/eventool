@@ -3,7 +3,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>eventool</title>
@@ -13,6 +14,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<p:messages id="messages" showDetail="true" autoUpdate="true"
 		closable="true" />
 
+	<h:form>
+		<p:commandButton value="Zurueck zur Eventuebersicht"
+			action="#{managereventregistrierungenView.zurueckZuEvents}"
+			icon="ui-icon-arrowreturnthick-1-w" />
+	</h:form>
 
 	<p:panel id="basic"
 		header="#{managerSessionService.veranstaltungsAuswahl.name}"
@@ -41,7 +47,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</h:panelGrid></td>
 				<td><h:panelGrid columns="1" cellpadding="10">
 						<p:outputLabel
-							value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}"></p:outputLabel>
+							value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}">
+							<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
+						</p:outputLabel>
 					</h:panelGrid></td>
 			</tr>
 
@@ -50,7 +58,15 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<h:form>
 		<p:panel id="booking" header="Reservierungen:"
 			style="margin-bottom:20px">
-			<p:dataTable var="registrierung" value="#{managereventregistrierungenView.registrierungen}">
+
+			<h:outputText
+				value="Reservierungen Insgesamt: von #{managerSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
+			<p:dataTable var="registrierung"
+				value="#{managereventregistrierungenView.registrierungen}">
+
+				<p:column headerText="Reservierungs-ID">
+					<h:outputText value="#{registrierung.id}" />
+				</p:column>
 
 				<p:column headerText="Name">
 					<h:outputText value="#{registrierung.kundenName}" />

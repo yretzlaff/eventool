@@ -47,6 +47,10 @@ public class ManagereventadministrationView {
 		
 	}
 	
+	public String zurueckZuEvents()	{
+		return "managerevents.jsf";
+	}
+	
 	
 	public void setVeranstaltungService(VeranstaltungService service) {
 		this.veranstaltungService = service;
