@@ -16,12 +16,13 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	</h1>
 
 
-	<h:messages />
+	<p:messages id="messages" showDetail="true" autoUpdate="true"
+		closable="true" />
 
 	<h:form>
 		<div>
 			<p:commandButton action="#{managereventsView.neueVeranstaltung}"
-				value="Neues Event anlegen" styleclass="smallButton">
+				value="Neues Event anlegen" styleclass="smallButton" icon="ui-icon-plusthick">
 			</p:commandButton>
 		</div>
 	</h:form>
@@ -48,8 +49,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			</p:column>
 			
 			<p:column headerText="Bearbeiten">
-				<p:commandButton icon="ui-icon-star" title="Event bearbeiten" action="#{managereventsView.bearbeiten(veranstaltung)}" />
-				<p:commandButton icon="ui-icon-edit" title="Registrierungen ansehen" action="#{managereventsView.registrierungen(veranstaltung)}" />
+				<p:commandButton icon="ui-icon-pencil" title="Event bearbeiten" action="#{managereventsView.bearbeiten(veranstaltung)}" />
+				<p:commandButton icon="ui-icon-info" title="Registrierungen ansehen" action="#{managereventsView.registrierungen(veranstaltung)}" />
 			</p:column>
 			
 		</p:dataTable>

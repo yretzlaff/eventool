@@ -12,7 +12,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 </h:head>
 <body>
 	<ui:include src="header.xhtml" />
-
+	<p:messages id="messages" showDetail="true" autoUpdate="true"
+		closable="true" />
 	<h:form>
 		<div>
 			<p:inputText value="#{startseiteView.anwenderSessionService.suchbegriff}"></p:inputText>
