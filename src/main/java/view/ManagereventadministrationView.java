@@ -27,6 +27,9 @@ public class ManagereventadministrationView {
 	private Veranstaltung veranstaltung;
 	
 	public String speichern(){
+		System.out.println(">>>>>>>>>>Auswahl der veranst: " + managerSessionService.getVeranstaltungsAuswahl().getName());
+		veranstaltungService.updateVeranstaltung(managerSessionService.getVeranstaltungsAuswahl());
+		managerSessionService.setVeranstaltungsAuswahl(null);
 		return "managerevents.jsf";
 	}
 	

@@ -29,6 +29,7 @@ public class ManagereventsView {
 
 
 	public String neueVeranstaltung() {
+		managerSessionService.setVeranstaltungsAuswahl(new Veranstaltung());
 		return "managereventadministration.jsf";
 	}
 
