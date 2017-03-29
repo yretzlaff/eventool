@@ -3,16 +3,16 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>eventool</title>
 </h:head>
 <body>
-	<h1>
-		<p:outputLabel value="eventool"></p:outputLabel>
-	</h1>
-	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	<ui:include src="header.xhtml" />
+	<p:messages id="messages" showDetail="true" autoUpdate="true"
+		closable="true" />
 
 
 	<p:panel id="basic"
@@ -42,7 +42,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</h:panelGrid></td>
 				<td><h:panelGrid columns="1" cellpadding="10">
 						<p:outputLabel
-							value="#{anwenderSessionService.veranstaltungsAuswahl.veranstaltungsDatum}"></p:outputLabel>
+							value="#{anwenderSessionService.veranstaltungsAuswahl.veranstaltungsDatum}">
+							<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>
+						</p:outputLabel>
 					</h:panelGrid></td>
 			</tr>
 
@@ -59,7 +61,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<p:outputLabel value="" />
 				<p:outputLabel value="Tickets: " />
 				<p:inputText value="#{anwendereventdetailsView.auswahlTicketAnzahl}"></p:inputText>
-				<p:outputLabel value="Max.: #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
+				<p:outputLabel
+					value="Max.: #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
 			</h:panelGrid>
 			<p:separator />
 			<p:commandButton value="Reservieren!"

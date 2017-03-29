@@ -11,26 +11,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 </h:head>
 <body>
-	<h1>
-		<p:outputLabel value="EVENTOOL"></p:outputLabel>
-	</h1>
+	<ui:include src="header.xhtml" />
 
-
-	<div>
-		<p:button outcome="managerlogin.xhtml" icon="ui-icon-star"
-			value="Login Manager" title="Login Eventmanager">
-		</p:button>
-
-		<p:button outcome="managerlogin.xhtml" icon="ui-icon-star"
-			value="Help" title="Hilfeseite">
-		</p:button>
-	</div>
 	<h:form>
 		<div>
 			<p:inputText value="#{startseiteView.anwenderSessionService.suchbegriff}"></p:inputText>
 
 			<p:commandButton action="#{startseiteView.suchen}" value="Eventsuche"
-				styleclass="smallButton" ajax="false">
+				styleclass="smallButton" ajax="false" icon="ui-icon-search">
 			</p:commandButton>
 		</div>
 	</h:form>

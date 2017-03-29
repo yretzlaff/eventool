@@ -29,6 +29,10 @@ public class StartseiteView {
 	public String suchen() {
 		return "anwendersuchergebnisse.jsf";
 	}
+	
+	public String login()	{
+		return "managerlogin.jsf";
+	}
 
 
 	public List<Veranstaltung> getVeranstaltungen() {

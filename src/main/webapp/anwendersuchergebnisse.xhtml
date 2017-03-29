@@ -7,20 +7,17 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>eventool-suchergebnisse</title>
+	<title>eventool</title>
 </h:head>
 <body>
-	<h1>
-		<p:outputLabel value="EVENTOOL"></p:outputLabel>
-	</h1>
-
+	<ui:include src="header.xhtml" />
 	<h:form>
 		<div>
 			<p:inputText
 				value="#{anwenderSessionService.suchbegriff}"></p:inputText>
 
 			<p:commandButton action="#{anwendersuchergebnisseView.suchen}"
-				value="Suchen" styleclass="smallButton">
+				value="Eventsuche" styleclass="smallButton" icon="ui-icon-search">
 			</p:commandButton>
 		</div>
 	</h:form>
