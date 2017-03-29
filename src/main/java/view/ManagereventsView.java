@@ -40,7 +40,7 @@ public class ManagereventsView {
 		// hier muss eigentlich "veranstaltungService.getToManager(manager)" hin, da ja nur die Events des
 		// Managers angezeigt werden sollen. Manager kann man sich dann aus dem Session Context holen, ist
 		// aber noch nicht implementiert.
-		return veranstaltungService.getAll();
+		return veranstaltungService.getToManager(managerSessionService.getActiveUser());
 	}
 	
 	public String bearbeiten(Veranstaltung veranstaltung){

@@ -25,13 +25,7 @@ public class UserService implements Serializable{
 	@Inject
 	private EntityManager entityManager;
 
-	@Produces 
-	@ApplicationScoped
-	EntityManager createEntityManager(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2");
-		System.out.println(">>>>>>>>>>>entitymanag erzeugt");
-		return emf.createEntityManager();
-	}
+	
 
 	public EntityManager getEntityManager() {
 		return entityManager;

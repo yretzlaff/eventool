@@ -9,11 +9,17 @@ import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import model.*;
@@ -23,68 +29,70 @@ import model.*;
 public class VeranstaltungService implements Serializable{
 	
 	@Inject
+	private UserService userService;
+	
+	@Inject
 	private EntityManager entityManager;
+	
+	@Produces 
+	@ApplicationScoped
+	EntityManager createEntityManager(){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2");
+		System.out.println(">>>>>>>>>>>entitymanag erzeugt");
+		return emf.createEntityManager();
+	}
+	
 
 	@SuppressWarnings("deprecation")
-	public VeranstaltungService() throws Exception {
-				
-		Veranstaltung veranst = new Veranstaltung("KIZ-Konzert", "Dortmund",
-				"Das ist ein Konzert", new Date(2017, 11, 29, 21, 0));
-		addVeranstaltung(veranst);
-		
-		Thread.sleep(2000);
-		
-		veranst = new Veranstaltung("Party bei Hendrik", "Langweilighausen",
-				"Das ist eine lahme Party", new Date(2017, 5, 18, 21, 21));
-		addVeranstaltung(veranst);
-		
-		Thread.sleep(2000);
-		
-		veranst = new Veranstaltung("Sünninghauser Dorffest", "Sünninghausen - Im Nattkamp",
-				"Freier Eintritt für Ü65 - HIGHLIGHT: Die Kastelruther Spatzen-Double", new Date(2017, 7, 1, 10, 30));
-		addVeranstaltung(veranst);
-		
-		Thread.sleep(2000);
-		
-		veranst = new Veranstaltung("Absolventenball 2017", "Rattenfängerhalle Hameln",
-				"Yannick wird Retzevoll sein", new Date(2017, 7, 15, 18, 0));
-		addVeranstaltung(veranst);
-		
+	public VeranstaltungService() throws Exception {	
 		
 	}
 
 	private List<Veranstaltung> veranstaltungen = new LinkedList<Veranstaltung>();
 
 	public List<Veranstaltung> getAll() {
-		return this.veranstaltungen;
+		
+		TypedQuery<Veranstaltung> query = entityManager.createQuery("SELECT v FROM Veranstaltung v", Veranstaltung.class);
+		return query.getResultList();
+		
+		//return this.veranstaltungen;
 	}
 
-	/**
+	
 	@Transactional
 	public Veranstaltung addVeranstaltung(Veranstaltung veranstalt) throws Exception {
+		entityManager.getTransaction().begin();
+	//	System.out.println(entityManager.getTransaction().isActive());
+		
 		this.entityManager.persist(veranstalt);
+		entityManager.getTransaction().commit();
 		return veranstalt;
 	}
 	
 	
-	**/
 	
 	public List<Veranstaltung> getToManager(User manager){
-		return this.veranstaltungen;
-	}
-	
-	
-	
-	
-	public Veranstaltung addVeranstaltung(Veranstaltung veranst) {
 		
-		System.out.println("Add Event with Name: " + veranst.getName());
-		veranstaltungen.add(veranst);
-		return veranst;
+		TypedQuery<Veranstaltung> query = entityManager.createQuery(
+				"SELECT v FROM Veranstaltung v where v.manager = :manager", Veranstaltung.class);
+		query.setParameter("manager", manager);
+		try{
+			List<Veranstaltung> veranst = query.getResultList();
+			return veranst;
+		} catch (NoResultException e){
+			return null;
+		}
+
 	}
+	
 
-
-	public List<Veranstaltung> getAllNextFirst() {
+	public List<Veranstaltung> getAllNextFirst(){
+		try {
+			addTestVeranstaltungen();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		List<Veranstaltung> nextVeranstaltungen = this.veranstaltungen;
 		nextVeranstaltungen.sort(new Comparator<Veranstaltung>() {
 			@Override
@@ -94,6 +102,21 @@ public class VeranstaltungService implements Serializable{
 		});
 		return nextVeranstaltungen;
 	}
+
+	private void addTestVeranstaltungen() throws Exception {
+		// TODO Auto-generated method stub
+		
+		
+		Veranstaltung veranst = new Veranstaltung("Spaßfestival", "Sünninghausen - Im Nattkamp",
+				"Freier Eintritt für Ü65 - HIGHLIGHT: Die Kastelruther Spatzen-Double", new Date(2017, 7, 1, 10, 30));
+		veranst.setManager(userService.getUserByName("admin").get());
+		veranst.setOeffentlich(false);
+		veranst.setUhrzeit(21000);
+		addVeranstaltung(veranst);
+		
+		
+	}
+
 
 	public List<Veranstaltung> getAllNewestFirst() {
 		List<Veranstaltung> newestVeranstaltungen = this.veranstaltungen;

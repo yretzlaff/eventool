@@ -13,7 +13,15 @@ public class User {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	@Column(name = "NAME",length=255)
 	private String name;
