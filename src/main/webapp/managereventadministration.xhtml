@@ -28,11 +28,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</h:panelGrid></td>
 
 				<td><h:panelGrid columns="1" cellpadding="10">
-						<p:inputText value="Titel"></p:inputText>
+						<p:inputText value="#{managerSessionService.veranstaltungsAuswahl.name}"></p:inputText>
 
 						<p:inputTextarea rows="5" cols="30" counter="display"
 							maxlength="140" counterTemplate="{0} characters remaining."
-							autoResize="false" value="Beschreibung" />
+							autoResize="false" value="#{managerSessionService.veranstaltungsAuswahl.beschreibung}" />
 						<h:outputText id="display" />
 					</h:panelGrid></td>
 
@@ -40,17 +40,17 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<tr>
 				<td><h:outputLabel id="platzhalter"></h:outputLabel></td>
 				<td><h:panelGrid columns="1" cellpadding="10">
-						<p:calendar mode="inline" />
-						<p:inputText value="Ort"></p:inputText>
+						<p:calendar mode="inline"  value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}"/>
+						<p:inputText value="#{managerSessionService.veranstaltungsAuswahl.ort}"></p:inputText>
 						<div>
 							<h:panelGrid columns="2" cellpadding="10">
-								<p:inputText value="Preis"></p:inputText>
+								<p:inputText value="#{managerSessionService.veranstaltungsAuswahl.preis}"></p:inputText>
 								<p:outputLabel>Euro</p:outputLabel>
 							</h:panelGrid>
 						</div>
 						<p:inputText value="Ticketanzahl"></p:inputText>
 						<h:panelGrid columns="2" cellpadding="10">
-							<p:selectBooleanCheckbox id="oeff"></p:selectBooleanCheckbox>
+							<p:selectBooleanCheckbox id="oeff" value="#{managerSessionService.veranstaltungsAuswahl.oeffentlich}"></p:selectBooleanCheckbox>
 							<p:outputLabel> oeffentlich?</p:outputLabel>
 						</h:panelGrid>
 						<h:form>

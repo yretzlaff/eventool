@@ -26,6 +26,7 @@ public class Veranstaltung {
 	private String name;
 	private String ort;
 	private String beschreibung;
+	private double preis;
 	private User manager;
 	private Date veranstaltungsDatum;
 	private Date anlageDatum;
@@ -162,6 +163,22 @@ public class Veranstaltung {
 	 */
 	public void setOeffentlich(boolean oeffentlich) {
 		this.oeffentlich = oeffentlich;
+	}
+
+
+	/**
+	 * @return the preis
+	 */
+	public double getPreis() {
+		return preis;
+	}
+
+
+	/**
+	 * @param preis the preis to set
+	 */
+	public void setPreis(double preis) {
+		this.preis = preis;
 	}
 
 }
