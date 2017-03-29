@@ -15,16 +15,15 @@ import service.VeranstaltungService;
 
 @Named
 @RequestScoped
-//@ManagedBean
+
 public class AnwendereventdetailsView {
-	//@ManagedProperty("#{veranstaltungService}")
+	
 	@Inject
 	private VeranstaltungService veranstaltungService;
 	
 	@Inject
 	private RegistrierungService registrierungService;
 	
-	//@ManagedProperty("#{anwenderSessionService}")
 	@Inject
 	private AnwenderSessionService anwenderSessionService;
 

@@ -16,7 +16,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		closable="true" />
 	<h:form>
 		<div>
-			<p:inputText value="#{startseiteView.anwenderSessionService.suchbegriff}"></p:inputText>
+			<p:inputText
+				value="#{startseiteView.anwenderSessionService.suchbegriff}"></p:inputText>
 
 			<p:commandButton action="#{startseiteView.suchen}" value="Eventsuche"
 				styleclass="smallButton" ajax="false" icon="ui-icon-search">
@@ -29,72 +30,81 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<td>
 				<div class="left">
 					<p:panel header="Neueste Veranstaltungen: ">
-						<p:dataScroller value="#{startseiteView.neuesteVeranstaltungen}"
-							var="veranstaltungneu" mode="document" chunkSize="2">
-							<h:panelGrid columns="2" style="width:100%"
-								columnClasses="logo,detail">
-								<p:button icon="ui-icon-star"
-									value="Hier Bild" title="Bild">
-								</p:button>
-								<p:outputPanel>
-									<h:panelGrid columns="2" cellpadding="5">
-										<h:outputText value="Name:" />
-										<h:outputText value="#{veranstaltungneu.name}"
-											style="font-weight: bold" />
+						<h:form>
+							<p:dataScroller value="#{startseiteView.neuesteVeranstaltungen}"
+								var="veranstaltungneu" mode="document" chunkSize="2">
+								<h:panelGrid columns="2" style="width:100%"
+									columnClasses="logo,detail">
+									<p:commandButton icon="ui-icon-star" value="Details"
+										title="Bild"
+										action="#{startseiteView.eventdetails(veranstaltungneu)}">
+									</p:commandButton>
+									<p:outputPanel>
+										<h:panelGrid columns="2" cellpadding="5">
+											<h:outputText value="Name:" />
+											<h:outputText value="#{veranstaltungneu.name}"
+												style="font-weight: bold" />
 
-										<h:outputText value="Ort:" />
-										<h:outputText value="#{veranstaltungneu.ort}"
-											style="font-weight: bold" />
+											<h:outputText value="Ort:" />
+											<h:outputText value="#{veranstaltungneu.ort}"
+												style="font-weight: bold" />
 
-										<h:outputText value="Beschreibung:" />
-										<h:outputText value="#{veranstaltungneu.beschreibung}"
-											style="font-weight: bold" />
-									</h:panelGrid>
-								</p:outputPanel>
-							</h:panelGrid>
+											<h:outputText value="Beschreibung:" />
+											<h:outputText value="#{veranstaltungneu.beschreibung}"
+												style="font-weight: bold" />
+										</h:panelGrid>
+									</p:outputPanel>
+								</h:panelGrid>
+								<p:separator></p:separator>
 
-							<f:facet name="loader">
-								<p:commandButton type="button" value="Weitere Laden" />
-							</f:facet>
-						</p:dataScroller>
+								<f:facet name="loader">
+									<p:commandButton type="button" value="Weitere Laden" />
+								</f:facet>
+							</p:dataScroller>
+						</h:form>
 					</p:panel>
 				</div>
 			</td>
+
 			<td>
 				<div class="right">
 					<p:panel header="Naechste Veranstaltungen: ">
-						<p:dataScroller value="#{startseiteView.naechsteVeranstaltungen}"
-							var="veranstaltungnaechste" mode="inline" chunkSize="2">
+						<h:form>
+							<p:dataScroller value="#{startseiteView.naechsteVeranstaltungen}"
+								var="veranstaltungnaechste" mode="inline" chunkSize="2">
 
-							<h:panelGrid columns="2" style="width:100%"
-								columnClasses="logo,detail">
-								<p:button icon="ui-icon-star"
-									value="Hier Bild" title="Bild">
-								</p:button>
-								<p:outputPanel>
-									<h:panelGrid columns="2" cellpadding="5">
-										<h:outputText value="Name:" />
-										<h:outputText value="#{veranstaltungnaechste.name}"
-											style="font-weight: bold" />
+								<h:panelGrid columns="2" style="width:100%"
+									columnClasses="logo,detail">
+									<p:commandButton icon="ui-icon-star" value="Details"
+										title="Bild"
+										action="#{startseiteView.eventdetails(veranstaltungnaechste)}">
+									</p:commandButton>
+									<p:outputPanel>
+										<h:panelGrid columns="2" cellpadding="5">
+											<h:outputText value="Name:" />
+											<h:outputText value="#{veranstaltungnaechste.name}"
+												style="font-weight: bold" />
 
-										<h:outputText value="Ort:" />
-										<h:outputText value="#{veranstaltungnaechste.ort}"
-											style="font-weight: bold" />
+											<h:outputText value="Ort:" />
+											<h:outputText value="#{veranstaltungnaechste.ort}"
+												style="font-weight: bold" />
 
-										<h:outputText value="Beschreibung:" />
-										<h:outputText value="#{veranstaltungnaechste.beschreibung}"
-											style="font-weight: bold" />
-									</h:panelGrid>
-								</p:outputPanel>
-							</h:panelGrid>
-
-							<f:facet name="loader">
-								<p:commandButton type="button" value="Weitere Laden" />
-							</f:facet>
-						</p:dataScroller>
+											<h:outputText value="Beschreibung:" />
+											<h:outputText value="#{veranstaltungnaechste.beschreibung}"
+												style="font-weight: bold" />
+										</h:panelGrid>
+									</p:outputPanel>
+								</h:panelGrid>
+								<p:separator></p:separator>
+								<f:facet name="loader">
+									<p:commandButton type="button" value="Weitere Laden" />
+								</f:facet>
+							</p:dataScroller>
+						</h:form>
 					</p:panel>
 				</div>
 			</td>
+
 		</tr>
 	</table>
 

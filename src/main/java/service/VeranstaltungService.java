@@ -60,6 +60,7 @@ public class VeranstaltungService implements Serializable {
 	@Transactional
 	public Veranstaltung addVeranstaltung(Veranstaltung veranstalt)
 			throws Exception {
+		veranstalt.setAnlageDatum(new Date());
 		entityManager.getTransaction().begin();
 		// System.out.println(entityManager.getTransaction().isActive());
 
@@ -84,6 +85,18 @@ public class VeranstaltungService implements Serializable {
 	}
 
 	public List<Veranstaltung> getAllNextFirst() {
+		
+		TypedQuery<Veranstaltung> query = entityManager.createQuery(
+				"SELECT v FROM Veranstaltung v WHERE v.veranstaltungsDatum > CURRENT_DATE ORDER BY v.veranstaltungsDatum ASC",
+				Veranstaltung.class);
+		try {
+			query.setMaxResults(10);
+			List<Veranstaltung> veranst = query.getResultList();
+			return veranst;
+		} catch (NoResultException e) {
+			return null;
+		}
+/**		
 		List<Veranstaltung> nextVeranstaltungen = this.veranstaltungen;
 		nextVeranstaltungen.sort(new Comparator<Veranstaltung>() {
 			@Override
@@ -93,9 +106,24 @@ public class VeranstaltungService implements Serializable {
 			};
 		});
 		return nextVeranstaltungen;
+		
+		**/
 	}
 
 	public List<Veranstaltung> getAllNewestFirst() {
+		
+		TypedQuery<Veranstaltung> query = entityManager.createQuery(
+				"SELECT v FROM Veranstaltung v ORDER BY v.anlageDatum DESC",
+				Veranstaltung.class);
+		try {
+			query.setMaxResults(10);
+			List<Veranstaltung> veranst = query.getResultList();
+			return veranst;
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+		/**
 		List<Veranstaltung> newestVeranstaltungen = this.veranstaltungen;
 		newestVeranstaltungen.sort(new Comparator<Veranstaltung>() {
 			@Override
@@ -104,6 +132,8 @@ public class VeranstaltungService implements Serializable {
 			};
 		});
 		return newestVeranstaltungen;
+		
+		**/
 	}
 
 	

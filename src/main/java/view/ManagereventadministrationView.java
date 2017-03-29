@@ -27,10 +27,24 @@ public class ManagereventadministrationView {
 	private Veranstaltung veranstaltung;
 	
 	public String speichern(){
-		System.out.println(">>>>>>>>>>Auswahl der veranst: " + managerSessionService.getVeranstaltungsAuswahl().getName());
-		veranstaltungService.updateVeranstaltung(managerSessionService.getVeranstaltungsAuswahl());
-		managerSessionService.setVeranstaltungsAuswahl(null);
-		return "managerevents.jsf";
+		
+		if(managerSessionService.getVeranstaltungsAuswahl().getId() > 0){
+			
+			veranstaltungService.updateVeranstaltung(managerSessionService.getVeranstaltungsAuswahl());
+			managerSessionService.setVeranstaltungsAuswahl(null);
+			return "managerevents.jsf";
+		}else{
+			try {
+				managerSessionService.getVeranstaltungsAuswahl().setManager(managerSessionService.getActiveUser());
+				veranstaltungService.addVeranstaltung(managerSessionService.getVeranstaltungsAuswahl());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return "managerevents.jsf";
+		}
+		
+		
 	}
 	
 	

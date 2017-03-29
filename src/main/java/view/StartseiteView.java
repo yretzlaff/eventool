@@ -12,16 +12,13 @@ import service.AnwenderSessionService;
 import service.VeranstaltungService;
 import model.Veranstaltung;
 
-//@ManagedBean
 @Named
 @RequestScoped
 public class StartseiteView {
 	
-	//@ManagedProperty("#{veranstaltungService}")
 	@Inject
 	private VeranstaltungService veranstaltungService;
 	
-	//@ManagedProperty("#{anwenderSessionService}")
 	@Inject
 	private AnwenderSessionService anwenderSessionService;
 	
@@ -32,6 +29,12 @@ public class StartseiteView {
 	
 	public String login()	{
 		return "managerlogin.jsf";
+	}
+	
+	public String eventdetails(Veranstaltung event)	{
+		anwenderSessionService.setVeranstaltungsAuswahl(event);
+		System.out.println(">>>>>>>>>Test eventdetails anzeigen");
+		return "anwendereventdetails.jsf";
 	}
 
 
