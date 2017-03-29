@@ -87,12 +87,6 @@ public class VeranstaltungService implements Serializable{
 	
 
 	public List<Veranstaltung> getAllNextFirst(){
-		try {
-			addTestVeranstaltungen();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		List<Veranstaltung> nextVeranstaltungen = this.veranstaltungen;
 		nextVeranstaltungen.sort(new Comparator<Veranstaltung>() {
 			@Override
