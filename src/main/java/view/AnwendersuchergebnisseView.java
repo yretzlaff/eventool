@@ -53,11 +53,11 @@ public class AnwendersuchergebnisseView {
 	}
 
 	public Map<String, String> getOrte() {
-		for (Veranstaltung ver : veranstaltungService.getAll()) {
-			orte.put(ver.getOrt(), ver.getOrt());
-		}
+		//for (Veranstaltung ver : veranstaltungService.getAll()) {
+		//	orte.put(ver.getOrt(), ver.getOrt());
+		//}
 
-		return orte;
+		return null;
 	}
 
 	public void setVeranstaltungService(VeranstaltungService service) {

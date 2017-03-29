@@ -43,7 +43,7 @@ public class StartseiteView {
 		return veranstaltungService.getAllNextFirst();
 	}
 	
-	public List<Veranstaltung> getNeuesteVeranstaltungen() {
+	public List<Veranstaltung> getNeuesteVeranstaltungen(){
 		return veranstaltungService.getAllNewestFirst();
 	}
 

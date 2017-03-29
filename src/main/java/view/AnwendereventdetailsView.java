@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import model.Registrierung;
 import service.AnwenderSessionService;
 import service.RegistrierungService;
 import service.VeranstaltungService;
@@ -56,7 +57,11 @@ public class AnwendereventdetailsView {
 	private int auswahlTicketAnzahl;
 	
 	public String reservieren()	{
-		registrierungService.addReservierung(reservierungsName, auswahlTicketAnzahl, anwenderSessionService.getVeranstaltungsAuswahl());
+		Registrierung newReg = new Registrierung();
+		newReg.setKundenName(reservierungsName);
+		newReg.setAnzahlTickets(auswahlTicketAnzahl);
+		newReg.setVeranstaltung(anwenderSessionService.getVeranstaltungsAuswahl());
+		registrierungService.addReservierung(newReg);
 		return "anwendereventdetailsView.jsf";
 	}
 

@@ -53,11 +53,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<p:dataTable var="registrierung" value="#{managereventregistrierungenView.registrierungen}">
 
 				<p:column headerText="Name">
-					<h:outputText value="#{registrierung.name}" />
+					<h:outputText value="#{registrierung.kundenName}" />
 				</p:column>
 
 				<p:column headerText="Anzahl">
-					<h:outputText value="#{registrierung.anzahl}" />
+					<h:outputText value="#{registrierung.anzahlTickets}" />
 				</p:column>
 			</p:dataTable>
 		</p:panel>
