@@ -130,7 +130,6 @@ public class VeranstaltungService implements Serializable {
 		query.setParameter("preis", veranst.getPreis());
 		query.setParameter("veranstaltungsDatum",
 				veranst.getVeranstaltungsDatum());
-		query.setParameter("uhrzeit", veranst.getUhrzeit());
 		query.setParameter("oeffentlich", veranst.isOeffentlich());
 		query.setParameter("gesamtTicketanzahl",
 				veranst.getGesamtTicketanzahl());

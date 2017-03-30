@@ -15,7 +15,6 @@ import model.Veranstaltung;
 public class AnwenderSessionService implements Serializable{
 	private String suchbegriff;
 	private String suchort;
-	private Date suchdatum;
 	private Veranstaltung veranstaltungsAuswahl;
 	
 	public String getSuchbegriff() {
@@ -29,12 +28,6 @@ public class AnwenderSessionService implements Serializable{
 	}
 	public void setSuchort(String suchort) {
 		this.suchort = suchort;
-	}
-	public Date getSuchdatum() {
-		return suchdatum;
-	}
-	public void setSuchdatum(Date suchdatum) {
-		this.suchdatum = suchdatum;
 	}
 	public Veranstaltung getVeranstaltungsAuswahl() {
 		return veranstaltungsAuswahl;

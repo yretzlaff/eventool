@@ -13,8 +13,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<ui:include src="header.xhtml" />
 	<h:form>
 		<div>
-			<p:inputText
-				value="#{anwenderSessionService.suchbegriff}"></p:inputText>
+			<p:inputText value="#{anwenderSessionService.suchbegriff}">
+				<f:validateLength maximum="120"></f:validateLength>
+				<f:validator validatorId="textValidator"></f:validator>
+			</p:inputText>
 
 			<p:commandButton action="#{anwendersuchergebnisseView.suchen}"
 				value="Eventsuche" styleclass="smallButton" icon="ui-icon-search">
@@ -27,13 +29,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 	<h:form>
 		<div>
-			<p:calendar
-				value="#{anwenderSessionService.suchdatum}"
-				mode="inline" />
-
+			
 			<p:outputLabel for="orte" value="Ort: " />
-			<p:selectOneMenu id="orte"
-				value="#{anwenderSessionService.suchort}"
+			<p:selectOneMenu id="orte" value="#{anwenderSessionService.suchort}"
 				var="ort">
 				<f:selectItem itemLabel="Select One" itemValue="" />
 				<f:selectItems value="#{anwendersuchergebnisseView.orte}" />

@@ -24,11 +24,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<td><p:outputLabel value="Username: "></p:outputLabel></td>
 				<td><p:inputText value="#{loginForm.user}" required="true">
 						<f:converter binding="#{userConverter}" />
+						<f:validateLength maximum="20"></f:validateLength>
 					</p:inputText></td>
 			</tr>
 			<tr>
 				<td><p:outputLabel value="Passwort: "></p:outputLabel></td>
-				<td><p:password value="#{loginForm.password}" required="true"></p:password></td>
+				<td><p:password value="#{loginForm.password}" required="true">
+						<f:validateLength maximum="20"></f:validateLength>
+					</p:password></td>
 			</tr>
 			<tr>
 				<td></td>

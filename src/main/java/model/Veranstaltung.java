@@ -30,8 +30,6 @@ public class Veranstaltung {
 	private User manager;
 	private Date veranstaltungsDatum;
 	private Date anlageDatum;
-	//Wofür Uhrzeit, ist das nicht in Date mit drin?
-	private int uhrzeit;
 	private boolean oeffentlich;
 	private int gesamtTicketanzahl;
 
@@ -139,18 +137,6 @@ public class Veranstaltung {
 	 */
 	public void setManager(User manager) {
 		this.manager = manager;
-	}
-	/**
-	 * @return the uhrzeit
-	 */
-	public int getUhrzeit() {
-		return uhrzeit;
-	}
-	/**
-	 * @param uhrzeit the uhrzeit to set
-	 */
-	public void setUhrzeit(int uhrzeit) {
-		this.uhrzeit = uhrzeit;
 	}
 	/**
 	 * @return the oeffentlich

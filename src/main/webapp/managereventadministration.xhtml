@@ -35,12 +35,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<td><p:outputLabel value="Veranstaltung: "></p:outputLabel></td>
 						<td><p:inputText
 								value="#{managerSessionService.veranstaltungsAuswahl.name}"
-								required="true"></p:inputText></td>
+								required="true">
+								<f:validateLength maximum="120"></f:validateLength>
+							</p:inputText></td>
 					</tr>
 					<tr>
 						<td><p:outputLabel value="Beschreibung: "></p:outputLabel></td>
 						<td><p:inputTextarea rows="5" cols="30" counter="display"
-								maxlength="140" counterTemplate="{0} weitere Buchstaben."
+								maxlength="500" counterTemplate="{0} weitere Buchstaben."
 								autoResize="false"
 								value="#{managerSessionService.veranstaltungsAuswahl.beschreibung}" />
 							<h:outputText id="display" /></td>
@@ -49,20 +51,16 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<tr>
 						<td><p:outputLabel id="platzhalter"></p:outputLabel></td>
 						<td><h:panelGrid columns="1" cellpadding="10">
-								<p:calendar mode="inline"
+								<p:calendar mode="inline" pattern="MM/dd/yyyy HH:mm:ss"
 									value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}" />
 							</h:panelGrid></td>
 					</tr>
 					<tr>
-						<td><p:outputLabel value="Uhrzeit: "></p:outputLabel></td>
-						<td><p:inputText
-								value="#{managerSessionService.veranstaltungsAuswahl.uhrzeit}"></p:inputText>
-						</td>
-					</tr>
-					<tr>
 						<td><p:outputLabel value="Ort: "></p:outputLabel></td>
 						<td><p:inputText
-								value="#{managerSessionService.veranstaltungsAuswahl.ort}"></p:inputText>
+								value="#{managerSessionService.veranstaltungsAuswahl.ort}">
+								<f:validateLength maximum="120"></f:validateLength>
+								</p:inputText>
 						</td>
 					</tr>
 					<tr>
@@ -79,8 +77,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<td><p:inputText id="Ticketanz"
 								value="#{managerSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}"
 								validatorMessage="Die Ticketanzahl muss zwischen 1 und 10000000 liegen!">
-								<f:validateLongRange minimum="1" maximum="1000000000"  />
-								</p:inputText></td>
+								<f:validateLongRange minimum="1" maximum="1000000000" />
+							</p:inputText></td>
 					</tr>
 					<tr>
 						<td><p:outputLabel> oeffentlich?</p:outputLabel></td>

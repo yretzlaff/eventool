@@ -60,7 +60,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<h:panelGrid columns="3" cellpadding="5">
 				<p:outputLabel value="Name: " />
-				<p:inputText value="#{anwendereventdetailsView.reservierungsName}" required="true"></p:inputText>
+				<p:inputText value="#{anwendereventdetailsView.reservierungsName}" required="true">
+				<f:validateLength maximum="120"></f:validateLength>
+				<f:validator validatorId="textValidator"></f:validator> </p:inputText>
 				<p:outputLabel value="" />
 				<p:outputLabel value="Tickets: " />
 				<p:inputText value="#{anwendereventdetailsView.auswahlTicketAnzahl}" validatorMessage="Fehler: Die angegebene Anzahl an Tickets ist nicht bestellbar. Bitte nochmal eingeben.">
