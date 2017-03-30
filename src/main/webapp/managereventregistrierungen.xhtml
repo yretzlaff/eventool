@@ -81,7 +81,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			</p:panel>
 		</h:form>
 	</h:panelGroup>
-	<h:panelGroup rendered="#{!sessionContext.isLoggedIn()}">
+	<h:panelGroup rendered="#{!managerSessionService.isLoggedIn()}">
 		<p:outputLabel
 			value="Bitte loggen Sie sich ein, um diese Ansicht zu sehen."></p:outputLabel>
 		<br></br>

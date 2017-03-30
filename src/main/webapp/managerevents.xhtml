@@ -47,7 +47,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</p:column>
 
 				<p:column headerText="Beschreibung">
-					<h:outputText value="#{veranstaltung.beschreibung}" />
+					<h:outputText value="#{veranstaltung.beschreibung.substring(0,35)}..." title="#{veranstaltung.beschreibung}"/>
 				</p:column>
 
 				<p:column headerText="Bearbeiten">
@@ -68,7 +68,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		</h:form>
 	</h:panelGroup>
 
-	<h:panelGroup rendered="#{!sessionContext.isLoggedIn()}">
+	<h:panelGroup rendered="#{!managerSessionService.isLoggedIn()}">
 		<p:outputLabel
 			value="Bitte loggen Sie sich ein, um diese Ansicht zu sehen."></p:outputLabel>
 		<br></br>
