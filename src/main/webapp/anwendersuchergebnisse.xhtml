@@ -15,11 +15,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<div>
 			<p:inputText value="#{anwenderSessionService.suchbegriff}">
 				<f:validateLength maximum="120"></f:validateLength>
-				<f:validator validatorId="textValidator"></f:validator>
 			</p:inputText>
 
 			<p:commandButton action="#{anwendersuchergebnisseView.suchen}"
-				value="Eventsuche" styleclass="smallButton" icon="ui-icon-search">
+				value="Eventsuche" styleclass="smallButton" icon="ui-icon-search" ajax="false">
 			</p:commandButton>
 		</div>
 	</h:form>

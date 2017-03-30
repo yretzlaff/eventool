@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -22,11 +24,9 @@ public class AnwendersuchergebnisseView {
 
 	
 
-	//@ManagedProperty("#{veranstaltungService}")
 	@Inject
 	private VeranstaltungService veranstaltungService;
 
-	//@ManagedProperty("#{anwenderSessionService}")
 	@Inject
 	private AnwenderSessionService anwenderSessionService;
 	
@@ -34,18 +34,24 @@ public class AnwendersuchergebnisseView {
 	private List<Veranstaltung> treffer;
 
 	public String suchen() {
+		
 		return "anwendersuchergebnisse.jsf";
 	}
 	
 	public String eventdetails(Veranstaltung event)	{
 		anwenderSessionService.setVeranstaltungsAuswahl(event);
-		System.out.println("Testausgabe, ob Funktion ausgeführt wird!");
 		return "anwendereventdetails.jsf";
 	}
 
 	public List<Veranstaltung> getTreffer() {
-		//später hier die treffer
-		return veranstaltungService.getAll();
+		System.out.println(">>>>>>>>Treffer neu gesetzt!");
+		if(veranstaltungService.getSuchergebnisse(anwenderSessionService.getSuchbegriff())!= null){
+			setTreffer(veranstaltungService.getSuchergebnisse(anwenderSessionService.getSuchbegriff()));
+			return treffer;
+		}
+		
+		return null;
+		
 	}
 	
 	public void setTreffer(List<Veranstaltung> treffer)	{

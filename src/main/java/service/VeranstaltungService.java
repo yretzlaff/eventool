@@ -13,7 +13,9 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -114,6 +116,33 @@ public class VeranstaltungService implements Serializable {
 			return null;
 		}
 
+	}
+
+	public List<Veranstaltung> getSuchergebnisse(String suchbegriff) {
+
+		TypedQuery<Veranstaltung> query = entityManager.createQuery(
+				"SELECT v FROM Veranstaltung v WHERE v.name = :suchbegriff AND v.oeffentlich = TRUE",
+				Veranstaltung.class);
+		query.setParameter("suchbegriff", suchbegriff);
+		try {
+			List<Veranstaltung> veranst = query.getResultList();
+			if (!veranst.isEmpty()) {
+				return veranst;
+			} else {
+				System.out.println(">>>>>>>>Keine Veranst gefunden!!!");
+				FacesContext
+						.getCurrentInstance()
+						.addMessage(
+								null,
+								new FacesMessage(FacesMessage.SEVERITY_INFO,
+										"Info",
+										"Es konnte keine Veranstaltung mit diesem Namen gefunden werden."));
+				return null;
+			}
+
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public boolean updateVeranstaltung(Veranstaltung veranst) {
