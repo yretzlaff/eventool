@@ -19,50 +19,62 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<p:messages id="messages" showDetail="true" autoUpdate="true"
 		closable="true" />
 
-	<h:form>
-		<div>
-			<p:commandButton action="#{managereventsView.neueVeranstaltung}"
-				value="Neues Event anlegen" styleclass="smallButton"
-				icon="ui-icon-plusthick">
-			</p:commandButton>
-		</div>
-	</h:form>
+	<h:panelGroup rendered="#{managerSessionService.isLoggedIn()}">
+		<h:form>
+			<div>
+				<p:commandButton action="#{managereventsView.neueVeranstaltung}"
+					value="Neues Event anlegen" styleclass="smallButton"
+					icon="ui-icon-plusthick">
+				</p:commandButton>
+			</div>
+		</h:form>
 
-	<h:form id="form">
+		<h:form id="form">
 
 
-		<p:dataTable var="veranstaltung"
-			value="#{managereventsView.veranstaltungen}"
-			style="margin-bottom:40px">
-			<f:facet name="header">
+			<p:dataTable var="veranstaltung"
+				value="#{managereventsView.veranstaltungen}"
+				style="margin-bottom:40px">
+				<f:facet name="header">
 				Meine Events
 			</f:facet>
-			<p:column headerText="Name">
-				<h:outputText value="#{veranstaltung.name}" />
-			</p:column>
+				<p:column headerText="Name">
+					<h:outputText value="#{veranstaltung.name}" />
+				</p:column>
 
-			<p:column headerText="Ort">
-				<h:outputText value="#{veranstaltung.ort}" />
-			</p:column>
+				<p:column headerText="Ort">
+					<h:outputText value="#{veranstaltung.ort}" />
+				</p:column>
 
-			<p:column headerText="Beschreibung">
-				<h:outputText value="#{veranstaltung.beschreibung}" />
-			</p:column>
+				<p:column headerText="Beschreibung">
+					<h:outputText value="#{veranstaltung.beschreibung}" />
+				</p:column>
 
-			<p:column headerText="Bearbeiten">
-				<p:commandButton rendered="#{veranstaltung.oeffentlich}"
-					title="Oeffentlich" icon="ui-icon-unlocked" disabled="true" />
-				<p:commandButton rendered="#{!veranstaltung.oeffentlich}"
-					title="Nicht Oeffentlich" icon="ui-icon-locked" disabled="true" />
-				<p:commandButton icon="ui-icon-pencil" title="Event bearbeiten"
-					action="#{managereventsView.bearbeiten(veranstaltung)}"
-					rendered="#{!veranstaltung.oeffentlich}" />
-				<p:commandButton icon="ui-icon-info" title="Registrierungen ansehen"
-					action="#{managereventsView.registrierungen(veranstaltung)}"
-					rendered="#{veranstaltung.oeffentlich}" />
-			</p:column>
+				<p:column headerText="Bearbeiten">
+					<p:commandButton rendered="#{veranstaltung.oeffentlich}"
+						title="Oeffentlich" icon="ui-icon-unlocked" disabled="true" />
+					<p:commandButton rendered="#{!veranstaltung.oeffentlich}"
+						title="Nicht Oeffentlich" icon="ui-icon-locked" disabled="true" />
+					<p:commandButton icon="ui-icon-pencil" title="Event bearbeiten"
+						action="#{managereventsView.bearbeiten(veranstaltung)}"
+						rendered="#{!veranstaltung.oeffentlich}" />
+					<p:commandButton icon="ui-icon-info"
+						title="Registrierungen ansehen"
+						action="#{managereventsView.registrierungen(veranstaltung)}"
+						rendered="#{veranstaltung.oeffentlich}" />
+				</p:column>
 
-		</p:dataTable>
-	</h:form>
+			</p:dataTable>
+		</h:form>
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{!sessionContext.isLoggedIn()}">
+		<p:outputLabel
+			value="Bitte loggen Sie sich ein, um diese Ansicht zu sehen."></p:outputLabel>
+		<br></br>
+		<p:link outcome="managerlogin.jsf" value="Zum Login"></p:link>
+
+	</h:panelGroup>
+
 </body>
 </html>

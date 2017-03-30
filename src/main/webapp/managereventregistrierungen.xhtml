@@ -14,69 +14,79 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<p:messages id="messages" showDetail="true" autoUpdate="true"
 		closable="true" />
 
-	<h:form>
-		<p:commandButton value="Zurueck zur Eventuebersicht"
-			action="#{managereventregistrierungenView.zurueckZuEvents}"
-			icon="ui-icon-arrowreturnthick-1-w" />
-	</h:form>
+	<h:panelGroup rendered="#{managerSessionService.isLoggedIn()}">
 
-	<p:panel id="basic"
-		header="#{managerSessionService.veranstaltungsAuswahl.name}"
-		style="margin-bottom:20px">
-		<table>
+		<h:form>
+			<p:commandButton value="Zurueck zur Eventuebersicht"
+				action="#{managereventregistrierungenView.zurueckZuEvents}"
+				icon="ui-icon-arrowreturnthick-1-w" />
+		</h:form>
 
-			<tr>
-				<td><h:panelGrid columns="1" cellpadding="10">
-						<p:button value="Bildtest!">
-						</p:button>
-					</h:panelGrid></td>
-
-				<td><h:panelGrid columns="1" cellpadding="10">
-						<p:outputLabel
-							value="#{managerSessionService.veranstaltungsAuswahl.beschreibung}"></p:outputLabel>
-					</h:panelGrid></td>
-
-
-			</tr>
-			<tr>
-				<td></td>
-
-				<td><h:panelGrid columns="1" cellpadding="10">
-						<p:outputLabel
-							value="#{managerSessionService.veranstaltungsAuswahl.ort}"></p:outputLabel>
-					</h:panelGrid></td>
-				<td><h:panelGrid columns="1" cellpadding="10">
-						<p:outputLabel
-							value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}">
-							<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
-						</p:outputLabel>
-					</h:panelGrid></td>
-			</tr>
-
-		</table>
-	</p:panel>
-	<h:form>
-		<p:panel id="booking" header="Reservierungen:"
+		<p:panel id="basic"
+			header="#{managerSessionService.veranstaltungsAuswahl.name}"
 			style="margin-bottom:20px">
+			<table>
 
-			<h:outputText
-				value="Reservierungen Insgesamt: von #{managerSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
-			<p:dataTable var="registrierung"
-				value="#{managereventregistrierungenView.registrierungen}">
+				<tr>
+					<td><h:panelGrid columns="1" cellpadding="10">
+							<p:button value="Bildtest!">
+							</p:button>
+						</h:panelGrid></td>
 
-				<p:column headerText="Reservierungs-ID">
-					<h:outputText value="#{registrierung.id}" />
-				</p:column>
+					<td><h:panelGrid columns="1" cellpadding="10">
+							<p:outputLabel
+								value="#{managerSessionService.veranstaltungsAuswahl.beschreibung}"></p:outputLabel>
+						</h:panelGrid></td>
 
-				<p:column headerText="Name">
-					<h:outputText value="#{registrierung.kundenName}" />
-				</p:column>
 
-				<p:column headerText="Anzahl">
-					<h:outputText value="#{registrierung.anzahlTickets}" />
-				</p:column>
-			</p:dataTable>
+				</tr>
+				<tr>
+					<td></td>
+
+					<td><h:panelGrid columns="1" cellpadding="10">
+							<p:outputLabel
+								value="#{managerSessionService.veranstaltungsAuswahl.ort}"></p:outputLabel>
+						</h:panelGrid></td>
+					<td><h:panelGrid columns="1" cellpadding="10">
+							<p:outputLabel
+								value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}">
+								<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
+							</p:outputLabel>
+						</h:panelGrid></td>
+				</tr>
+
+			</table>
 		</p:panel>
-	</h:form>
+		<h:form>
+			<p:panel id="booking" header="Reservierungen:"
+				style="margin-bottom:20px">
+
+				<h:outputText
+					value="Reservierungen Insgesamt: #{managereventregistrierungenView.veranstaltungService.getAnzahlReservierungen(managerSessionService.getVeranstaltungsAuswahl())} von #{managerSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
+				<p:dataTable var="registrierung"
+					value="#{managereventregistrierungenView.registrierungen}">
+
+					<p:column headerText="Reservierungs-ID">
+						<h:outputText value="#{registrierung.id}" />
+					</p:column>
+
+					<p:column headerText="Name">
+						<h:outputText value="#{registrierung.kundenName}" />
+					</p:column>
+
+					<p:column headerText="Anzahl">
+						<h:outputText value="#{registrierung.anzahlTickets}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</h:panelGroup>
+	<h:panelGroup rendered="#{!sessionContext.isLoggedIn()}">
+		<p:outputLabel
+			value="Bitte loggen Sie sich ein, um diese Ansicht zu sehen."></p:outputLabel>
+		<br></br>
+		<p:link outcome="managerlogin.jsf" value="Zum Login"></p:link>
+
+	</h:panelGroup>
 </body>
 </html>

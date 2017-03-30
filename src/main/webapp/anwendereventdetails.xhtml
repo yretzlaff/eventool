@@ -15,7 +15,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		closable="true" />
 	<h:form>
 		<p:commandButton value="Zurueck zu den Suchergebnissen"
-			action="#{anwendereventdetailsView.zurueckZurSuche}" icon="ui-icon-arrowreturnthick-1-w"/>
+			action="#{anwendereventdetailsView.zurueckZurSuche}"
+			icon="ui-icon-arrowreturnthick-1-w" />
 	</h:form>
 	<p:panel id="basic"
 		header="#{anwenderSessionService.veranstaltungsAuswahl.name}"
@@ -59,12 +60,15 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<h:panelGrid columns="3" cellpadding="5">
 				<p:outputLabel value="Name: " />
-				<p:inputText value="#{anwendereventdetailsView.reservierungsName}"></p:inputText>
+				<p:inputText value="#{anwendereventdetailsView.reservierungsName}" required="true"></p:inputText>
 				<p:outputLabel value="" />
 				<p:outputLabel value="Tickets: " />
-				<p:inputText value="#{anwendereventdetailsView.auswahlTicketAnzahl}"></p:inputText>
+				<p:inputText value="#{anwendereventdetailsView.auswahlTicketAnzahl}" validatorMessage="Fehler: Die angegebene Anzahl an Tickets ist nicht bestellbar. Bitte nochmal eingeben.">
+					<f:validateLongRange minimum="1" maximum="#{anwendereventdetailsView.veranstaltungService.getAnzahlFreieTickets(anwenderSessionService.veranstaltungsAuswahl)}"
+						for="ustaRankingId" />
+				</p:inputText>
 				<p:outputLabel
-					value="Max.: #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}" />
+					value=" #{anwendereventdetailsView.veranstaltungService.getAnzahlFreieTickets(anwenderSessionService.veranstaltungsAuswahl)} von #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl} Tickets sind noch frei." />
 			</h:panelGrid>
 			<p:separator />
 			<p:commandButton value="Verbindlich Reservieren!"

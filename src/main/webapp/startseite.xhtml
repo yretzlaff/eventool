@@ -32,7 +32,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<p:panel header="Neueste Veranstaltungen: ">
 						<h:form>
 							<p:dataScroller value="#{startseiteView.neuesteVeranstaltungen}"
-								var="veranstaltungneu" mode="document" chunkSize="2">
+								var="veranstaltungneu" mode="document" chunkSize="5">
 								<h:panelGrid columns="2" style="width:100%"
 									columnClasses="logo,detail">
 									<p:commandButton icon="ui-icon-star" value="Details"
@@ -71,7 +71,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<p:panel header="Naechste Veranstaltungen: ">
 						<h:form>
 							<p:dataScroller value="#{startseiteView.naechsteVeranstaltungen}"
-								var="veranstaltungnaechste" mode="inline" chunkSize="2">
+								var="veranstaltungnaechste" mode="inline" chunkSize="5">
 
 								<h:panelGrid columns="2" style="width:100%"
 									columnClasses="logo,detail">

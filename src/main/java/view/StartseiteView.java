@@ -33,7 +33,6 @@ public class StartseiteView {
 	
 	public String eventdetails(Veranstaltung event)	{
 		anwenderSessionService.setVeranstaltungsAuswahl(event);
-		System.out.println(">>>>>>>>>Test eventdetails anzeigen");
 		return "anwendereventdetails.jsf";
 	}
 

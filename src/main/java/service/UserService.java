@@ -62,36 +62,4 @@ public class UserService implements Serializable{
 		return query.getResultList();
 	}
 	
-	
-	
-/**	
-	
-	private List<User> users;
-
-	public UserService() {
-		users = new ArrayList<User>();
- 		addUser(new User("admin", "admin", "admintest.de"));
-	}
- * 
- * 
-	public Optional<User> getUserByName(String name) {
-		return users.stream().filter(user -> user.getName().equals(name)).findFirst();
-	}
-
-	public boolean addUser(User user) {
-		if (getUserByName(user.getName()).isPresent() == false) {
-			return users.add(user);
-		}
-		return false;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
-**/
 }

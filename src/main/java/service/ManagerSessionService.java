@@ -17,7 +17,7 @@ import model.Veranstaltung;
 @SessionScoped
 public class ManagerSessionService implements Serializable{
 
-	private User activeUser;
+	private User activeUser = null;
 	private Veranstaltung veranstaltungsAuswahl;
 
 	
@@ -27,6 +27,10 @@ public class ManagerSessionService implements Serializable{
 		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_INFO, "Login successful", ""));
 		System.out.println("Login user with username " + user.getName());
 		activeUser = user;
+	}
+	
+	public boolean isLoggedIn(){
+		return activeUser != null;
 	}
 
 	public User getActiveUser() {

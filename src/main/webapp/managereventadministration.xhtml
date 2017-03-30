@@ -18,78 +18,94 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<p:messages id="messages" showDetail="true" autoUpdate="true"
 		closable="true" />
 
-	<h:form>
-		<p:commandButton value="Zurueck zur Eventuebersicht"
-			action="#{managereventadministrationView.zurueckZuEvents}"
-			icon="ui-icon-arrowreturnthick-1-w" />
-	</h:form>
-	
-	<p:panel id="basic" header="Eventdetails" style="margin-bottom:20px">
+	<h:panelGroup rendered="#{managerSessionService.isLoggedIn()}">
 		<h:form>
-			<table>
-
-				<tr>
-
-
-					<td><p:outputLabel value="Veranstaltung: "></p:outputLabel></td>
-					<td><p:inputText
-							value="#{managerSessionService.veranstaltungsAuswahl.name}"></p:inputText>
-					</td>
-				</tr>
-				<tr>
-					<td><p:outputLabel value="Beschreibung: "></p:outputLabel></td>
-					<td><p:inputTextarea rows="5" cols="30" counter="display"
-							maxlength="140" counterTemplate="{0} weitere Buchstaben."
-							autoResize="false"
-							value="#{managerSessionService.veranstaltungsAuswahl.beschreibung}" />
-						<h:outputText id="display" /></td>
-
-				</tr>
-				<tr>
-					<td><p:outputLabel id="platzhalter"></p:outputLabel></td>
-					<td><h:panelGrid columns="1" cellpadding="10">
-							<p:calendar mode="inline"
-								value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}" />
-						</h:panelGrid></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel value="Uhrzeit: "></p:outputLabel></td>
-					<td><p:inputText
-							value="#{managerSessionService.veranstaltungsAuswahl.uhrzeit}"></p:inputText>
-					</td>
-				</tr>
-				<tr>
-					<td><p:outputLabel value="Ort: "></p:outputLabel></td>
-					<td><p:inputText
-							value="#{managerSessionService.veranstaltungsAuswahl.ort}"></p:inputText>
-					</td>
-				</tr>
-				<tr>
-					<td><p:outputLabel value="Preis: "></p:outputLabel></td>
-					<td><p:inputText
-							value="#{managerSessionService.veranstaltungsAuswahl.preis}"></p:inputText>
-						<p:outputLabel>Euro</p:outputLabel></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel value="Anzahl Tickets: "></p:outputLabel></td>
-					<td><p:inputText
-							value="#{managerSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel> oeffentlich?</p:outputLabel></td>
-					<td><p:selectBooleanCheckbox id="oeff"
-							value="#{managerSessionService.veranstaltungsAuswahl.oeffentlich}"></p:selectBooleanCheckbox>
-					</td>
-				</tr>
-				<tr>
-					<td><p:outputLabel id="PLatzhalter2"></p:outputLabel></td>
-					<td><p:commandButton value="GO !"
-							action="#{managereventadministrationView.speichern}">
-						</p:commandButton></td>
-				</tr>
-
-			</table>
+			<p:commandButton value="Zurueck zur Eventuebersicht"
+				action="#{managereventadministrationView.zurueckZuEvents}"
+				icon="ui-icon-arrowreturnthick-1-w" />
 		</h:form>
-	</p:panel>
+
+		<p:panel id="basic" header="Eventdetails" style="margin-bottom:20px">
+			<h:form>
+				<table>
+
+					<tr>
+
+
+						<td><p:outputLabel value="Veranstaltung: "></p:outputLabel></td>
+						<td><p:inputText
+								value="#{managerSessionService.veranstaltungsAuswahl.name}"
+								required="true"></p:inputText></td>
+					</tr>
+					<tr>
+						<td><p:outputLabel value="Beschreibung: "></p:outputLabel></td>
+						<td><p:inputTextarea rows="5" cols="30" counter="display"
+								maxlength="140" counterTemplate="{0} weitere Buchstaben."
+								autoResize="false"
+								value="#{managerSessionService.veranstaltungsAuswahl.beschreibung}" />
+							<h:outputText id="display" /></td>
+
+					</tr>
+					<tr>
+						<td><p:outputLabel id="platzhalter"></p:outputLabel></td>
+						<td><h:panelGrid columns="1" cellpadding="10">
+								<p:calendar mode="inline"
+									value="#{managerSessionService.veranstaltungsAuswahl.veranstaltungsDatum}" />
+							</h:panelGrid></td>
+					</tr>
+					<tr>
+						<td><p:outputLabel value="Uhrzeit: "></p:outputLabel></td>
+						<td><p:inputText
+								value="#{managerSessionService.veranstaltungsAuswahl.uhrzeit}"></p:inputText>
+						</td>
+					</tr>
+					<tr>
+						<td><p:outputLabel value="Ort: "></p:outputLabel></td>
+						<td><p:inputText
+								value="#{managerSessionService.veranstaltungsAuswahl.ort}"></p:inputText>
+						</td>
+					</tr>
+					<tr>
+						<td><p:outputLabel value="Preis: "></p:outputLabel></td>
+						<td><p:inputText id="Ticketpreis"
+								value="#{managerSessionService.veranstaltungsAuswahl.preis}"
+								validatorMessage="Preis muss zwischen 0 und 100000 liegen!">
+								<f:validateDoubleRange minimum="0.0" maximum="100000.1"
+									for="Ticketpreis" />
+							</p:inputText> <p:outputLabel>Euro</p:outputLabel></td>
+					</tr>
+					<tr>
+						<td><p:outputLabel value="Anzahl Tickets: "></p:outputLabel></td>
+						<td><p:inputText id="Ticketanz"
+								value="#{managerSessionService.veranstaltungsAuswahl.gesamtTicketanzahl}"
+								validatorMessage="Die Ticketanzahl muss zwischen 1 und 10000000 liegen!">
+								<f:validateLongRange minimum="1" maximum="1000000000"  />
+								</p:inputText></td>
+					</tr>
+					<tr>
+						<td><p:outputLabel> oeffentlich?</p:outputLabel></td>
+						<td><p:selectBooleanCheckbox id="oeff"
+								value="#{managerSessionService.veranstaltungsAuswahl.oeffentlich}"></p:selectBooleanCheckbox>
+						</td>
+					</tr>
+					<tr>
+						<td><p:outputLabel id="PLatzhalter2"></p:outputLabel></td>
+						<td><p:commandButton value="GO !"
+								action="#{managereventadministrationView.speichern}">
+							</p:commandButton></td>
+					</tr>
+
+				</table>
+			</h:form>
+		</p:panel>
+
+	</h:panelGroup>
+	<h:panelGroup rendered="#{!sessionContext.isLoggedIn()}">
+		<p:outputLabel
+			value="Bitte loggen Sie sich ein, um diese Ansicht zu sehen."></p:outputLabel>
+		<br></br>
+		<p:link outcome="managerlogin.jsf" value="Zum Login"></p:link>
+
+	</h:panelGroup>
 </body>
 </html>

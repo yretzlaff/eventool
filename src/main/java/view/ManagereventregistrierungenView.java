@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import service.ManagerSessionService;
 import service.RegistrierungService;
+import service.VeranstaltungService;
 import model.Registrierung;
 
 @Named
@@ -18,6 +19,9 @@ public class ManagereventregistrierungenView {
 	
 	@Inject
 	private ManagerSessionService managerSessionService;
+	
+	@Inject
+	private VeranstaltungService veranstaltungService;
 	
 	@Inject
 	private RegistrierungService registrierungService;
@@ -41,6 +45,20 @@ public class ManagereventregistrierungenView {
 
 	public void setManagerSessionService(ManagerSessionService managerSessionService) {
 		this.managerSessionService = managerSessionService;
+	}
+
+	/**
+	 * @return the veranstaltungService
+	 */
+	public VeranstaltungService getVeranstaltungService() {
+		return veranstaltungService;
+	}
+
+	/**
+	 * @param veranstaltungService the veranstaltungService to set
+	 */
+	public void setVeranstaltungService(VeranstaltungService veranstaltungService) {
+		this.veranstaltungService = veranstaltungService;
 	}
 	
 }

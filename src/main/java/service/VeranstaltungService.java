@@ -85,10 +85,11 @@ public class VeranstaltungService implements Serializable {
 	}
 
 	public List<Veranstaltung> getAllNextFirst() {
-		
-		TypedQuery<Veranstaltung> query = entityManager.createQuery(
-				"SELECT v FROM Veranstaltung v WHERE v.veranstaltungsDatum > CURRENT_DATE ORDER BY v.veranstaltungsDatum ASC",
-				Veranstaltung.class);
+
+		TypedQuery<Veranstaltung> query = entityManager
+				.createQuery(
+						"SELECT v FROM Veranstaltung v WHERE v.veranstaltungsDatum > CURRENT_DATE AND v.oeffentlich = TRUE ORDER BY v.veranstaltungsDatum ASC",
+						Veranstaltung.class);
 		try {
 			query.setMaxResults(10);
 			List<Veranstaltung> veranst = query.getResultList();
@@ -96,25 +97,15 @@ public class VeranstaltungService implements Serializable {
 		} catch (NoResultException e) {
 			return null;
 		}
-/**		
-		List<Veranstaltung> nextVeranstaltungen = this.veranstaltungen;
-		nextVeranstaltungen.sort(new Comparator<Veranstaltung>() {
-			@Override
-			public int compare(Veranstaltung o1, Veranstaltung o2) {
-				return o1.getVeranstaltungsDatum().compareTo(
-						o2.getVeranstaltungsDatum());
-			};
-		});
-		return nextVeranstaltungen;
-		
-		**/
+
 	}
 
 	public List<Veranstaltung> getAllNewestFirst() {
-		
-		TypedQuery<Veranstaltung> query = entityManager.createQuery(
-				"SELECT v FROM Veranstaltung v ORDER BY v.anlageDatum DESC",
-				Veranstaltung.class);
+
+		TypedQuery<Veranstaltung> query = entityManager
+				.createQuery(
+						"SELECT v FROM Veranstaltung v WHERE v.oeffentlich = TRUE ORDER BY v.anlageDatum DESC",
+						Veranstaltung.class);
 		try {
 			query.setMaxResults(10);
 			List<Veranstaltung> veranst = query.getResultList();
@@ -122,21 +113,9 @@ public class VeranstaltungService implements Serializable {
 		} catch (NoResultException e) {
 			return null;
 		}
-		
-		/**
-		List<Veranstaltung> newestVeranstaltungen = this.veranstaltungen;
-		newestVeranstaltungen.sort(new Comparator<Veranstaltung>() {
-			@Override
-			public int compare(Veranstaltung o1, Veranstaltung o2) {
-				return o2.getAnlageDatum().compareTo(o1.getAnlageDatum());
-			};
-		});
-		return newestVeranstaltungen;
-		
-		**/
+
 	}
 
-	
 	public boolean updateVeranstaltung(Veranstaltung veranst) {
 
 		entityManager.getTransaction().begin();
@@ -161,19 +140,39 @@ public class VeranstaltungService implements Serializable {
 		return true;
 	}
 
-	private void addTestVeranstaltungen() throws Exception {
-		// TODO Auto-generated method stub
+	public int getAnzahlFreieTickets(Veranstaltung veranst) {
 
-		Veranstaltung veranst = new Veranstaltung(
-				"Spaßfestival",
-				"Sünninghausen - Im Nattkamp",
-				"Freier Eintritt für Ü65 - HIGHLIGHT: Die Kastelruther Spatzen-Double",
-				new Date(2017, 7, 1, 10, 30));
-		veranst.setManager(userService.getUserByName("admin").get());
-		veranst.setOeffentlich(false);
-		veranst.setUhrzeit(21000);
-		addVeranstaltung(veranst);
+		TypedQuery<Long> query = entityManager
+				.createQuery(
+						"SELECT SUM(r.anzahlTickets) FROM Registrierung r WHERE r.veranstaltung = :veranstaltung",
+						Long.class);
+		query.setParameter("veranstaltung", veranst);
 
+		Long verkaufteTickets = query.getSingleResult();
+
+		if (verkaufteTickets != null) {
+			return (veranst.getGesamtTicketanzahl() - verkaufteTickets
+					.intValue());
+		}
+
+		return veranst.getGesamtTicketanzahl();
+	}
+
+	public int getAnzahlReservierungen(Veranstaltung veranst) {
+
+		TypedQuery<Long> query = entityManager
+				.createQuery(
+						"SELECT SUM(r.anzahlTickets) FROM Registrierung r WHERE r.veranstaltung = :veranstaltung",
+						Long.class);
+		query.setParameter("veranstaltung", veranst);
+
+		Long verkaufteTickets = query.getSingleResult();
+
+		if (verkaufteTickets != null) {
+			return (verkaufteTickets.intValue());
+		}
+
+		return 0;
 	}
 
 	/**
