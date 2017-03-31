@@ -24,10 +24,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<table>
 
 			<tr>
-				<td><h:panelGrid columns="1" cellpadding="10">
-						<p:button value="Bildtest!">
-						</p:button>
-					</h:panelGrid></td>
+				<td></td>
 
 				<td><h:panelGrid columns="1" cellpadding="10">
 						<p:outputLabel
@@ -73,7 +70,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					value=" #{anwendereventdetailsView.veranstaltungService.getAnzahlFreieTickets(anwenderSessionService.veranstaltungsAuswahl)} von #{anwenderSessionService.veranstaltungsAuswahl.gesamtTicketanzahl} Tickets sind noch frei." />
 			</h:panelGrid>
 			<p:separator />
-			<p:commandButton value="Verbindlich Reservieren!"
+			<p:commandButton ajax="false" value="Verbindlich Reservieren!"
 				action="#{anwendereventdetailsView.reservieren}"
 				icon="ui-icon-check" />
 

@@ -18,7 +18,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			</p:inputText>
 
 			<p:commandButton action="#{anwendersuchergebnisseView.suchen}"
-				value="Eventsuche" styleclass="smallButton" icon="ui-icon-search" ajax="false">
+				value="Eventsuche" styleclass="smallButton" icon="ui-icon-search"
+				ajax="false">
 			</p:commandButton>
 		</div>
 	</h:form>
@@ -26,30 +27,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<p:messages id="messages" showDetail="true" autoUpdate="true"
 		closable="true" />
 
-	<h:form>
-		<div>
-			
-			<p:outputLabel for="orte" value="Ort: " />
-			<p:selectOneMenu id="orte" value="#{anwenderSessionService.suchort}"
-				var="ort">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{anwendersuchergebnisseView.orte}" />
-			</p:selectOneMenu>
-
-
-		</div>
-	</h:form>
-
 	<div>
 		<h:form>
 			<p:panel header="Gefundene Veranstaltungen: ">
-				<f:facet name="footer">
-					<h:outputText value="Ende" />
-				</f:facet>
-
-
 				<p:dataScroller value="#{anwendersuchergebnisseView.treffer}"
-					var="veranstaltung" mode="inline" chunkSize="10">
+					var="veranstaltung" mode="inline" chunkSize="5">
 
 					<h:panelGrid columns="2" style="width:100%"
 						columnClasses="logo,detail">
@@ -73,7 +55,12 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 							</h:panelGrid>
 						</p:outputPanel>
 					</h:panelGrid>
+					<f:facet name="footer">
 
+					</f:facet>
+					<f:facet name="loader">
+						<p:commandButton type="button" value="Weitere Laden"/>
+					</f:facet>
 				</p:dataScroller>
 			</p:panel>
 		</h:form>

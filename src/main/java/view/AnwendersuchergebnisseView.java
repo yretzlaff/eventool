@@ -30,7 +30,6 @@ public class AnwendersuchergebnisseView {
 	@Inject
 	private AnwenderSessionService anwenderSessionService;
 	
-	private Map<String, String> orte = new HashMap<String, String>();
 	private List<Veranstaltung> treffer;
 
 	public String suchen() {
@@ -56,14 +55,6 @@ public class AnwendersuchergebnisseView {
 	
 	public void setTreffer(List<Veranstaltung> treffer)	{
 		this.treffer = treffer;
-	}
-
-	public Map<String, String> getOrte() {
-		//for (Veranstaltung ver : veranstaltungService.getAll()) {
-		//	orte.put(ver.getOrt(), ver.getOrt());
-		//}
-
-		return null;
 	}
 
 	public void setVeranstaltungService(VeranstaltungService service) {

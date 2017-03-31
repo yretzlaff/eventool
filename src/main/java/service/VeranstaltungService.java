@@ -123,7 +123,7 @@ public class VeranstaltungService implements Serializable {
 		System.out.println(suchbegriff);
 
 		TypedQuery<Veranstaltung> query = entityManager.createQuery(
-				"SELECT v FROM Veranstaltung v WHERE v.name LIKE :suchbegriff AND v.oeffentlich = TRUE",
+				"SELECT v FROM Veranstaltung v WHERE UPPER(v.name) LIKE UPPER(:suchbegriff) OR UPPER(v.beschreibung) LIKE UPPER(:suchbegriff) OR UPPER(v.ort) LIKE UPPER(:suchbegriff) AND v.oeffentlich = TRUE",
 				Veranstaltung.class);
 		query.setParameter("suchbegriff", suchbegriff);
 		try {
