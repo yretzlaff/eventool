@@ -131,11 +131,11 @@ public class VeranstaltungService implements Serializable {
 			if (!veranst.isEmpty()) {
 				return veranst;
 			} else {
-				System.out.println(">>>>>>>>Keine Veranst gefunden!!!");
+				
 				FacesContext
 						.getCurrentInstance()
 						.addMessage(
-								null,
+								"",
 								new FacesMessage(FacesMessage.SEVERITY_INFO,
 										"Info",
 										"Es konnte keine Veranstaltung mit diesem Namen gefunden werden."));
@@ -152,7 +152,7 @@ public class VeranstaltungService implements Serializable {
 		entityManager.getTransaction().begin();
 		TypedQuery<Veranstaltung> query = entityManager
 				.createQuery(
-						"UPDATE Veranstaltung v SET v.name = :name, v.ort = :ort, v.beschreibung = :beschreibung, v.preis = :preis, v.veranstaltungsDatum = :veranstaltungsDatum, v.uhrzeit = :uhrzeit, v.oeffentlich = :oeffentlich, v.gesamtTicketanzahl = :gesamtTicketanzahl WHERE v = :veranst",
+						"UPDATE Veranstaltung v SET v.name = :name, v.ort = :ort, v.beschreibung = :beschreibung, v.preis = :preis, v.veranstaltungsDatum = :veranstaltungsDatum, v.oeffentlich = :oeffentlich, v.gesamtTicketanzahl = :gesamtTicketanzahl WHERE v = :veranst",
 						Veranstaltung.class);
 		query.setParameter("name", veranst.getName());
 		query.setParameter("veranst", veranst);
