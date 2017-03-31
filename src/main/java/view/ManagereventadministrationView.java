@@ -1,8 +1,10 @@
 package view;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -32,11 +34,14 @@ public class ManagereventadministrationView {
 			
 			veranstaltungService.updateVeranstaltung(managerSessionService.getVeranstaltungsAuswahl());
 			managerSessionService.setVeranstaltungsAuswahl(null);
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_INFO, "Veranstaltungsinfos erfolgreich gespeichert", ""));
 			return "managerevents.jsf";
 		}else{
 			try {
 				managerSessionService.getVeranstaltungsAuswahl().setManager(managerSessionService.getActiveUser());
 				veranstaltungService.addVeranstaltung(managerSessionService.getVeranstaltungsAuswahl());
+				FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_INFO, "Veranstaltungsinfos erfolgreich gespeichert", ""));
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
